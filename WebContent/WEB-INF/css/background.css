@@ -1,0 +1,43 @@
+
+
+div.loginLine{
+
+	 padding: 20px;
+	 margin : 20px;
+}
+
+
+div.blank{
+	height: 10px;;
+}
+div.passage{
+	background: #e9ecef;
+	 border-radius:20px;
+	 padding: 10px;
+	 margin : 25px;
+	 opacity: 0.8;
+}
+
+h2.welcome{
+
+	margin:10px;
+}
+
+h2.passage{
+
+	 border-radius:5px;
+	 padding: 10px
+}
+
+
+
+body{
+    background-image:url(../resoures/background.jpg);
+	background-attachment:fixed;
+     background-size: cover;
+	 
+}
+
+.radius{
+	border-radius:10px;
+}
