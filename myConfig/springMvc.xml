@@ -8,7 +8,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
 	<!--SpringMVC仅控制请求的跳转逻辑 ，所以只扫描 注解的控制器 -->
-	<context:component-scan base-package="com.scau.web" use-default-filters="false">
+	<context:component-scan base-package="com.cavlib.controller.*" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 	
