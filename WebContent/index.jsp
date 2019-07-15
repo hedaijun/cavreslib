@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="<%=request.getContextPath()%>/getUsers">所有用户信息</a>
+	Hello
 </body>
 </html>
