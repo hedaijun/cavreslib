@@ -1,4 +1,10 @@
-æ¯äººåœ¨controlleråŒ…å’ŒseriviceåŒ…ä¸‹é¢å»ºè‡ªå·±çš„æ§åˆ¶å™¨å’Œä¸šåŠ¡ç±»çš„åŒ…æ”¾è‡ªå·±çš„controllerå’Œservice
+ÏîÄ¿ÎÄ¼ş
+Ò»¡¢src  
+1¡¢com.cavlib.beans£º±àĞ´Êı¾İÄ£ĞÍÀà    ÃüÃûÀı×Ó£ºUser
+2¡¢com.cavlib.dao(½Ó¿Ú)£ºÊı¾İÄ£ĞÍ²Ù×÷½Ó¿Ú    ÃüÃûÀı×Ó£ºUserMapper
+3¡¢com.cavlib.handler:´¦ÀíurlÇëÇó,¿ØÖÆÆ÷    ÃüÃûÀı×Ó£ºUserController
+4¡¢com.cavlib.service:ÒµÎñÂß¼­    ÃüÃûÀı×Ó£ºUserService
 
-ç»Ÿä¸€ç”¨æ³¨è§£é…ç½®controllerå’Œservice,ä½¿ç”¨@RequsestMapping("\XXX")æ ‡æ³¨è‡ªå·±çš„controlleræ¥åŒºåˆ†ä¸šåŠ¡
+Ã¿ÈËÔÚcontroller°üÏÂÃæ½¨×Ô¼ºµÄÒµÎñ°ü·Å×Ô¼ºµÄÒµÎñcontroller
 
+Í³Ò»ÓÃ×¢½âÅäÖÃcontroller,Ê¹ÓÃ@Controller("\XXX")±ê×¢×Ô¼ºµÄÒµÎñ
