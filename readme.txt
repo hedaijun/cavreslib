@@ -1,10 +1,10 @@
-ÏîÄ¿ÎÄ¼ş
-Ò»¡¢src  
-1¡¢com.cavlib.beans£º±àĞ´Êı¾İÄ£ĞÍÀà    ÃüÃûÀı×Ó£ºUser
-2¡¢com.cavlib.dao(½Ó¿Ú)£ºÊı¾İÄ£ĞÍ²Ù×÷½Ó¿Ú    ÃüÃûÀı×Ó£ºUserMapper
-3¡¢com.cavlib.handler:´¦ÀíurlÇëÇó,¿ØÖÆÆ÷    ÃüÃûÀı×Ó£ºUserController
-4¡¢com.cavlib.service:ÒµÎñÂß¼­    ÃüÃûÀı×Ó£ºUserService
+é¡¹ç›®æ–‡ä»¶
+ä¸€ã€src  
+1ã€com.cavlib.beansï¼šç¼–å†™æ•°æ®æ¨¡å‹ç±»    å‘½åä¾‹å­ï¼šUser
+2ã€com.cavlib.dao(æ¥å£)ï¼šæ•°æ®æ¨¡å‹æ“ä½œæ¥å£    å‘½åä¾‹å­ï¼šUserMapper
+3ã€com.cavlib.handler:å¤„ç†urlè¯·æ±‚,æ§åˆ¶å™¨    å‘½åä¾‹å­ï¼šUserController
+4ã€com.cavlib.service:ä¸šåŠ¡é€»è¾‘    å‘½åä¾‹å­ï¼šUserService
 
-Ã¿ÈËÔÚcontroller°üÏÂÃæ½¨×Ô¼ºµÄÒµÎñ°ü·Å×Ô¼ºµÄÒµÎñcontroller
+æ¯äººåœ¨controlleråŒ…ä¸‹é¢å»ºè‡ªå·±çš„ä¸šåŠ¡åŒ…æ”¾è‡ªå·±çš„ä¸šåŠ¡controller
 
-Í³Ò»ÓÃ×¢½âÅäÖÃcontroller,Ê¹ÓÃ@Controller("\XXX")±ê×¢×Ô¼ºµÄÒµÎñ
+ç»Ÿä¸€ç”¨æ³¨è§£é…ç½®controller,ä½¿ç”¨@Controller("\XXX")æ ‡æ³¨è‡ªå·±çš„ä¸šåŠ¡
