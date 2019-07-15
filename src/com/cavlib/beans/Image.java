@@ -2,7 +2,7 @@ package com.cavlib.beans;
 
 import java.io.Serializable;
 
-public class Picture implements Serializable{
+public class Image implements Serializable{
 	private static final long serialVersionUID = 8363556599610850348L;
 
 	private int post_id;
