@@ -20,9 +20,13 @@
 		select * from post where user_id = #{userId};
 	</select>
 	
+	<select id="getPostByType" resultType="com.cavlib.beans.Post">
+	    select * from post where type = #{type};
+	</select>
+	
 	<insert id="publishPost" parameterType="com.cavlib.beans.Post">
-	    insert into post(id, title, time, content, link, user_id)
-	    values (#{post.id}, #{post.title}, #{post.time}, #{post.content}, #{post.link}, #{post.user_id});
+	    insert into post(id, title, time, content, link, user_id, type)
+	    values (#{post.id}, #{post.title}, #{post.time}, #{post.content}, #{post.link}, #{post.user_id}, #{post.type});
 	</insert>
 	
 	<delete id="deletePost" >

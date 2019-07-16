@@ -12,6 +12,7 @@ public interface PostMapper {
 	public Post getPostByTitle(String title);
 	public List<Post> getPostByTime(Date time);
 	public List<Post> getPostByUserId(int userId);
+	public List<Post> getPostByType(String type);
 	
 	public boolean publishPost(@Param("post") Post post);
 	
