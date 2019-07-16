@@ -1,1 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cavlib.dao.CommentMapper">
+
+    <insert id="addComment" parameterType="com.cavlib.beans.Comment">
+	    insert into comment(user_id, post_id, time, content)
+	    values (#{user_id}, #{post_id}, #{time}, #{content})
+	</insert>
+
+	<select id="getContentByPost" resultType="com.cavlib.beans.Comment">
+		select　* from comment where post_id = #{post_id}
+	</select>
+	
+	<select id="getContentByUser" resultType="com.cavlib.beans.Comment">
+		select　* from comment where user_id = #{user_id}
+	</select>
+	
+</mapper>
