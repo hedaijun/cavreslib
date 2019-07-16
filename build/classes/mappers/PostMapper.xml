@@ -29,10 +29,10 @@
          (select * from  post
     <where> 
     <if test="content != null">
-         content like {content})
+         content like {content} )
     </if> 
     <if test="type != null">
-         type = #{type})
+         type = #{type} )
     </if>
     </where>
          limit #{begin},5
