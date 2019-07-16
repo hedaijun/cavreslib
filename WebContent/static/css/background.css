@@ -25,6 +25,9 @@ h2.passage{
 	 padding: 10px
 }
 
+div.pagenav{
+	opacity: 0.8;
+}
 
 
 body{
