@@ -30,7 +30,7 @@
 	</insert>
 	
 	<delete id="deletePost" >
-	    delect from post where user_id = #{post_id};  
+	    delect from post where post_id = #{post_id};  
 	</delete>
 	
 </mapper>
