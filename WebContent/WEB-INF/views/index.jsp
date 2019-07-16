@@ -90,7 +90,6 @@
 	</div>
 	
 	<c:forEach items="${posts }" var="post">
-		<% for(int i = 0 ; i < 5 ;i++) { %>
 			<div class="row ">
 				<div class="col-md-9 passage">
 					<h2 class="passage">
@@ -104,7 +103,6 @@
 					</p>
 				</div>
 			</div>
-		<% } %>
 	</c:forEach>
 </div>
 
