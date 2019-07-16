@@ -17,11 +17,12 @@ public class DisplayPostsController {
 	private DisplayPostsService displayPostsService;
 	
 	@RequestMapping("/")
-	public String getPost(Map<String,Object> map,HttpServletRequest request) {
+	public String getPosts(Map<String,Object> map,HttpServletRequest request) {
 		Integer page= Integer.valueOf(request.getParameter("page"));
 		String tag= request.getParameter("tag");
 		String keyWord= request.getParameter("keyWord");
-		displayPostsService.loadPage(map,tag,keyWord);
+		List<Post> posts = displayPostsService.loadPage(page,tag,keyWord);
+		map.put("post", posts);
 		return "index";
 	}
 }
