@@ -8,7 +8,7 @@
 		select　url from user where post_id = #{post_id}
 	</select>
 	
-	<insert id="addImage" parameterType="com.cavlib.beans.Picture">
+	<insert id="addImage" parameterType="com.cavlib.beans.Image">
 	    insert into user(post_id, url)
 	    values (#{post_id}, #{url})
 	</insert>
