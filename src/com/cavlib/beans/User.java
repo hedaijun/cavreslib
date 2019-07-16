@@ -7,7 +7,7 @@ public class User implements Serializable {
 
 	private static final long serialVersionUID = 8363556599610850348L;
 	
-	private Integer id;
+	private Integer user_id;
 	private String name;
 	private String password;
 	private Boolean is_manager;
@@ -18,7 +18,7 @@ public class User implements Serializable {
 
 	public User(Integer id, String name, String password,Boolean is_manager,Boolean is_baned) {
 		super();
-		this.id = id;
+		this.user_id = id;
 		this.name = name;
 		this.password = password;
 		this.is_manager = is_manager;
@@ -26,10 +26,10 @@ public class User implements Serializable {
 	}
 
 	public int getId() {
-		return id;
+		return user_id;
 	}
 	public void setId(Integer id) {
-		this.id = id;
+		this.user_id = id;
 	}
 	public String getName() {
 		return name;
@@ -62,6 +62,6 @@ public class User implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", password=" + password + ", isManager="  +is_manager+", isBanded="+is_baned+ "]";
+		return "User [id=" + user_id + ", name=" + name + ", password=" + password + ", isManager="  +is_manager+", isBanded="+is_baned+ "]";
 	}
 }

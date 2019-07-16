@@ -6,17 +6,17 @@ import java.sql.Timestamp;
 public class Post implements Serializable{
 	private static final long serialVersionUID = 8363556599610850348L;
 	
-	private Integer id;
+	private Integer post_id;
 	private String title;
 	private String link;
 	private Timestamp time;
 	private String content;
 	private int user_id;
 	public Integer getId() {
-		return id;
+		return post_id;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setId(Integer post_id) {
+		this.post_id = post_id;
 	}
 	public String getTitle() {
 		return title;
@@ -51,6 +51,6 @@ public class Post implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "Post [id=" + id + ", title=" + title + ", time=" + time + ", content="  +content+", link="+link+ ", user_id="+user_id+"]";
+		return "Post [post_id=" + post_id + ", title=" + title + ", time=" + time + ", content="  +content+", link="+link+ ", user_id="+user_id+"]";
 	}
 }

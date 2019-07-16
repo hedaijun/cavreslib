@@ -5,7 +5,7 @@
 <mapper namespace="com.cavlib.dao.UserMapper">
 
 	<select id="checkUserByUserName" resultType="int">
-		select　count(id) from user where name = #{name}
+		select　count(user_id) from user where name = #{name}
 	</select>
 	
 	<select id="getPasswordByUserName" resultType="string">

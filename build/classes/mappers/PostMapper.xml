@@ -5,7 +5,7 @@
 <mapper namespace="com.cavlib.dao.PostMapper">
 
 	<select id="getPostById" resultType="com.cavlib.beans.Post">
-		select * from post where id = #{id};
+		select * from post where post_id = #{post_id};
 	</select>
 	
 	<select id="getPostByTitle" resultType="com.cavlib.beans.Post">
@@ -17,7 +17,7 @@
 	</select>
 	
 	<select id="getPostByUserId" resultType="com.cavlib.beans.Post">
-		select * from post where user_id = #{userId};
+		select * from post where user_id = #{user_id};
 	</select>
 	
 	<select id="getPostByType" resultType="com.cavlib.beans.Post">
@@ -26,11 +26,11 @@
 	
 	<insert id="publishPost" parameterType="com.cavlib.beans.Post">
 	    insert into post(id, title, time, content, link, user_id, type)
-	    values (#{post.id}, #{post.title}, #{post.time}, #{post.content}, #{post.link}, #{post.user_id}, #{post.type});
+	    values (#{post.post_id}, #{post.title}, #{post.time}, #{post.content}, #{post.link}, #{post.user_id}, #{post.type});
 	</insert>
 	
 	<delete id="deletePost" >
-	    delect from post where user_id = #{id};  
+	    delect from post where user_id = #{post_id};  
 	</delete>
 	
 </mapper>
