@@ -1,7 +1,7 @@
 package com.cavlib.beans;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class Post implements Serializable{
 	private static final long serialVersionUID = 8363556599610850348L;
@@ -9,7 +9,7 @@ public class Post implements Serializable{
 	private Integer id;
 	private String title;
 	private String link;
-	private Date time;
+	private Timestamp time;
 	private String content;
 	private int user_id;
 	public Integer getId() {
@@ -30,10 +30,10 @@ public class Post implements Serializable{
 	public void setLink(String link) {
 		this.link = link;
 	}
-	public Date getTime() {
+	public Timestamp getTime() {
 		return time;
 	}
-	public void setTime(Date time) {
+	public void setTime(Timestamp time) {
 		this.time = time;
 	}
 	public String getContent() {

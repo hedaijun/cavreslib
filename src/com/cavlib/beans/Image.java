@@ -6,7 +6,7 @@ public class Image implements Serializable{
 	private static final long serialVersionUID = 8363556599610850348L;
 
 	private int post_id;
-	private String image_url;
+	private String url;
 	public int getPost_id() {
 		return post_id;
 	}
@@ -14,15 +14,15 @@ public class Image implements Serializable{
 		this.post_id = post_id;
 	}
 	public String getImage_url() {
-		return image_url;
+		return url;
 	}
-	public void setImage_url(String image_url) {
-		this.image_url = image_url;
+	public void setImage_url(String url) {
+		this.url = url;
 	}
 
 	@Override
 	public String toString() {
-		return "Picture [post_id=" + post_id + ", image_url=" + image_url+ "]";
+		return "Picture [post_id=" + post_id + ", image_url=" + url+ "]";
 	}
 	
 }

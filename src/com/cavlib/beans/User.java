@@ -10,19 +10,19 @@ public class User implements Serializable {
 	private Integer id;
 	private String name;
 	private String password;
-	private Boolean isManager;
-	private Boolean isBaned;
+	private Boolean is_manager;
+	private Boolean is_baned;
 	public User() {
 		
 	}
 
-	public User(Integer id, String name, String password,Boolean isManager,Boolean isBaned) {
+	public User(Integer id, String name, String password,Boolean is_manager,Boolean is_baned) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.password = password;
-		this.isManager = isManager;
-		this.isBaned = isBaned;
+		this.is_manager = is_manager;
+		this.is_baned = is_baned;
 	}
 
 	public int getId() {
@@ -44,24 +44,24 @@ public class User implements Serializable {
 		this.password = password;
 	}
 	public Boolean getIsManager() {
-		return isManager;
+		return is_manager;
 	}
 
-	public void setIsManager(Boolean isManager) {
-		this.isManager = isManager;
+	public void setIsManager(Boolean is_manager) {
+		this.is_manager = is_manager;
 	}
 
 	public Boolean getIsBaned() {
-		return isBaned;
+		return is_baned;
 	}
 
-	public void setIsBaned(Boolean isBaned) {
-		this.isBaned = isBaned;
+	public void setIsBaned(Boolean is_baned) {
+		this.is_baned = is_baned;
 	}
 	
 	
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", password=" + password + ", isManager="  +isManager+", isBanded="+isBaned+ "]";
+		return "User [id=" + id + ", name=" + name + ", password=" + password + ", isManager="  +is_manager+", isBanded="+is_baned+ "]";
 	}
 }
