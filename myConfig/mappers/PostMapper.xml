@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cavlib.dao.PostMapper">
+
+	<select id="getPostById" resultType="com.cavlib.beans.Post">
+		select * from post where id = #{id};
+	</select>
+	
+	<select id="getPostByTitle" resultType="com.cavlib.beans.Post">
+		select * from post where title = #{title};
+	</select>
+	
+	<select id="getPostByTime" parameterType="date" resultType="com.cavlib.beans.Post">
+		select * from post where date = #{time};
+	</select>
+	
+	<select id="getPostByUserId" resultType="com.cavlib.beans.Post">
+		select * from post where user_id = #{userId};
+	</select>
+	
+	<insert id="publishPost" parameterType="com.cavlib.beans.Post">
+	    insert into post(id, title, time, content, link, user_id)
+	    values (#{post.id}, #{post.title}, #{post.time}, #{post.content}, #{post.link}, #{post.user_id});
+	</insert>
+	
+	<delete id="deletePost" >
+	    delect from post where user_id = #{id};  
+	</delete>
+	
+</mapper>
