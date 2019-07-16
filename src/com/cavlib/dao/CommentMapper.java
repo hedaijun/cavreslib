@@ -11,5 +11,5 @@ public interface CommentMapper {
 	public Boolean addComment(Comment comment);
 	public List<Comment> getContentByPost(int post_id);
 	public List<Comment> getContentByUser(int user_id);
-	
+	public List<Comment> getFiveComment(int post_id, int begin);
 }
