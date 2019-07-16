@@ -5,12 +5,12 @@
 <mapper namespace="com.cavlib.dao.UserMapper">
 
 	<select id="getImageByPostId" resultType="string">
-		select　url from user where id = #{id}
+		select　url from user where post_id = #{post_id}
 	</select>
 	
 	<insert id="addImage" parameterType="com.cavlib.beans.Picture">
-	    insert into user(id, url)
-	    values (#{id}, #{url})
+	    insert into user(post_id, url)
+	    values (#{post_id}, #{url})
 	</insert>
 	
 </mapper>
