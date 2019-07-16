@@ -13,10 +13,11 @@ import com.cavlib.beans.Post;
 @Controller
 public class IndexHandler {
 	@Autowired
-	private postService postService;
+	private PostService postService;
 	
 	@RequestMapping("/")
 	public String getPost(Map<String,Object> map,HttpServletRequest request) {
+		//根据起始位置，标签，关键词选择帖子，在主页显示
 		Integer page= Integer.valueOf(request.getParameter("page"));
 		String tag= request.getParameter("tag");
 		String keyWord= request.getParameter("keyWord");
