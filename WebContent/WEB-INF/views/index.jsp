@@ -1,4 +1,5 @@
-<!doctype html>
+<%@ page language="java" import="com.cavlib.beans.Post ,java.util.List"  pageEncoding="utf-8"%>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -146,62 +147,20 @@
 	<!--文章容器div，jsp动态加入文章-->
 	<div class="row ">
 		<!--标准文章div-->
+		<%for(Post post:(List<Post>) session.getAttribute("posts")) {%>
 		<div class="col-md-11 passage">
 			<h2 class="passage">
-				Heading
+				<%=post.getTitle() %>
 			</h2>
 			<p>
-				Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+				<%=post.getContent().substring(0, 50) %>
 			</p>
+			
 			<p>
 				<a class="btn btn-primary radius" href="#">View details »</a>
 			</p>
 		</div>
-		<div class="col-md-11 passage">
-			<h2 class="passage">
-				Heading
-			</h2>
-			<p>
-				Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-			</p>
-			<p>
-				<a class="btn btn-primary radius" href="#">View details »</a>
-			</p>
-		</div>
-		<div class="col-md-11 passage">
-			<h2 class="passage">
-				Heading
-			</h2>
-			<p>
-				Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-			</p>
-			<p>
-				<a class="btn btn-primary radius" href="#">View details »</a>
-			</p>
-		</div>
-		<div class="col-md-11 passage">
-			<h2 class="passage">
-				Heading
-			</h2>
-			<p>
-				Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-			</p>
-			<p>
-				<a class="btn btn-primary radius" href="#">View details »</a>
-			</p>
-		</div>
-		<div class="col-md-11 passage">
-			<h2 class="passage">
-				Heading
-			</h2>
-			<p>
-				Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-			</p>
-			<p>
-				<a class="btn btn-primary radius" href="#">View details »</a>
-			</p>
-		</div>
-		
+		<%} %>
 	</div>
 	<!--分页器,jsp根据数据库动态生成,显示5个页数摁钮、快速前进后退摁钮、前进后退摁钮-->
 	<div class="col-md-12 pagenav">

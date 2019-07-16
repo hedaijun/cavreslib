@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,12 +19,14 @@ public class DisplayPostsController {
 	private DisplayPostsService displayPostsService;
 	
 	@RequestMapping("/")
-	public String getPosts(Map<String,Object> map,HttpServletRequest request) {
+	public String getPosts(Map<String,Object> map,HttpServletRequest request,HttpServletResponse response,HttpSession session) {
 		Integer page= Integer.valueOf(request.getParameter("page"));
 		String tag= request.getParameter("tag");
 		String keyWord= request.getParameter("keyWord");
 		List<Post> posts = displayPostsService.loadPage(page,tag,keyWord);
-		map.put("post", posts);
+		session.removeAttribute("posts");
+		session.setAttribute("posts", posts);
+		map.put("page", page);
 		return "index";
 	}
 }
