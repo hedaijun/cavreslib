@@ -21,6 +21,6 @@
 	<mvc:annotation-driven></mvc:annotation-driven>
 	<mvc:default-servlet-handler/>
 	
-	<mvc:resources location="/WEB-INF/css/" mapping="/css/*"></mvc:resources>
+	<mvc:resources location="static/css/" mapping="/css/**"></mvc:resources>
 	
 </beans>
