@@ -21,7 +21,7 @@ public class DisplayPostsController {
 	@RequestMapping("/getPosts")
 	public String getPosts(Map<String,Object> map,HttpServletRequest request,HttpServletResponse response,HttpSession session) {
 		int page=1;
-		if(request.getParameter("pageindex")!=null) page= Integer.valueOf(request.getParameter("page"));
+		if(request.getParameter("pageindex")!=null) page= Integer.valueOf(request.getParameter("pageindex"));
 		if(page<1) page=1;
 		String tag= (String)session.getAttribute("tag");
 		String keyword= (String)session.getAttribute("keyword");
