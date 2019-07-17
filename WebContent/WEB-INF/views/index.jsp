@@ -25,6 +25,7 @@
 				</div>
 			</div>
 			<div class="row">
+				<%if(session.getAttribute("user")==null){ %>
 				<div class="col-md-11">
 				</div>
 				<div class="col-md-1 ">
@@ -111,6 +112,23 @@
 					
 					
 				</div>
+				<%}else{ %>
+				<div class="col-md-11">
+				</div>
+				<div class="col-md-1">
+					<div class="dropdown">
+				 
+						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+							<%=((User)session.getAttribute("user")).getName() %>
+						</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<a class="dropdown-item" href="#">我的帖子</a> 
+							<a class="dropdown-item" href="#">编写新帖子</a> 
+							<a class="dropdown-item" href="#">注销</a>
+						</div>
+					</div>
+				</div>
+				<%} %>
 			</div>
 			<div class="blank"></div>
 			<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-dark radius">
