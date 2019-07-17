@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.cavlib.beans.Post;
 import com.cavlib.dao.PostMapper;
 import com.cavlib.service.DisplayPostsService;
+import com.github.pagehelper.PageHelper;
 
 @Service
 public class DisplayPostsServiceImpl implements DisplayPostsService {
@@ -19,7 +20,8 @@ public class DisplayPostsServiceImpl implements DisplayPostsService {
 	@Override
 	public List<Post> loadPage(int page,String tag, String keyWord) {
 		// TODO Auto-generated method stub
-		return postMapper.getFivePost(page, keyWord, tag);
+		PageHelper.startPage(page,5);
+		return postMapper.getFivePost(keyWord, tag);
 		
 	}
 	

@@ -25,7 +25,7 @@ public class DisplayPostsController {
 		if(page<1) page=1;
 		String tag= (String)session.getAttribute("tag");
 		String keyword= (String)session.getAttribute("keyword");
-		if(request.getAttribute("back")!=null) {
+		if(request.getParameter("back")!=null) {
 			tag=null;
 			keyword=null;
 			page=0;
