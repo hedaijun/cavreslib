@@ -201,14 +201,16 @@
 							<li class="page-item">
 								<a class="page-link" href="/getPosts?pageindex=<%=pageindex-5 %>">...</a>
 							</li>
-							<%if(pageindex>=3) %>
+							<%if(pageindex>=3) {%>
 							<li class="page-item">
 								<a class="page-link" href="/getPosts?pageindex=<%=pageindex-2 %>"><%=pageindex-2 %></a>
 							</li>
-							<%if(pageindex>=2) %>
+							<%} %>
+							<%if(pageindex>=2) {%>
 							<li class="page-item">
 								<a class="page-link" href="/getPosts?pageindex=<%=pageindex-1 %>"><%=pageindex-1 %></a>
 							</li>
+							<%} %>
 							<!--当前页-->
 							<li class="page-item active" aria-current="page">
 								<a class="page-link" href="/getPosts?pageindex=<%=pageindex %>"><%=pageindex %> <span class="sr-only">(current)</span></a>
@@ -223,10 +225,11 @@
 							<li class="page-item">
 								<a class="page-link" href="/getPosts?pageindex=4">4</a>
 							</li>
-							<%if(pageindex==1) %>
+							<%if(pageindex==1) {%>
 							<li class="page-item">
 								<a class="page-link" href="/getPosts?pageindex=5">5</a>
 							</li>
+							<%} %>
 							<%} %>
 							<!--快速跳过按钮，点击一次5前进页-->
 							<li class="page-item">
