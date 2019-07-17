@@ -3,6 +3,7 @@ package com.cavlib.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.cavlib.beans.Comment;
 import com.cavlib.beans.Post;
@@ -10,6 +11,7 @@ import com.cavlib.dao.CommentMapper;
 import com.cavlib.dao.PostMapper;
 import com.cavlib.service.PostContentService;
 
+@Service
 public class PostContentServiceIpml implements PostContentService {
 	@Autowired
 	private PostMapper postMapper;
