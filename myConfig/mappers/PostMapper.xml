@@ -43,7 +43,7 @@
 	    values (#{post.post_id}, #{post.title}, #{post.time}, #{post.content}, #{post.link}, #{post.user_id}, #{post.type});
 	</insert>
 	
-	<delete id="deletePost" >
+	<delete id="deletePost" parameterType="int">
 	    delect from post where post_id = #{post_id};  
 	</delete>
 	
