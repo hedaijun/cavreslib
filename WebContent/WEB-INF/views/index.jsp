@@ -170,9 +170,15 @@
 			<h2 class="passage">
 				<%=post.getTitle() %>
 			</h2>
+			<%if(post.getContent().length()>20){ %>
 			<p>
-				<%=post.getContent().substring(0, 50) %>
+				<%=post.getContent().substring(0, 20) %>
 			</p>
+			<%} else{%>
+			<p>
+				<%=post.getContent() %>
+			</p>
+			<%} %>
 			<%if(session.getAttribute("user")!=null){ %>
 			<p>
 				<a class="btn btn-primary radius" href="#">View details »</a>
