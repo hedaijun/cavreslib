@@ -24,23 +24,22 @@
 	    select * from post where type = #{type};
 	</select>
 	
-	<select id="findActiveBlogLike" resultType="com.cavlib.beans.Post">
-         select * from 
-         (select * from  post
-    <where> 
-    <if test="content != null">
-         content like {content} )
-    </if> 
-    <if test="type != null">
-         type = #{type} )
-    </if>
-    </where>
-         limit #{begin},5
+	<select id="getFivePost" resultType="com.cavlib.beans.Post">
+         select * from post
+         <where> 
+         <if test="content != null">
+             content like #{content}
+         </if> 
+         <if test="type != null">
+             type = #{type}
+         </if>
+         </where>
+         order by time
     </select>
 	
 	<insert id="publishPost" parameterType="com.cavlib.beans.Post">
-	    insert into post(id, title, time, content, link, user_id, type)
-	    values (#{post.post_id}, #{post.title}, #{post.time}, #{post.content}, #{post.link}, #{post.user_id}, #{post.type});
+	    insert into post(title, content, link, user_id, type)
+	    values (#{post.title}, #{post.content}, #{post.link}, #{post.user_id}, #{post.type});
 	</insert>
 	
 	<delete id="deletePost" parameterType="int">

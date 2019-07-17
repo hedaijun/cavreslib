@@ -1,13 +1,15 @@
 package com.cavlib.dao;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.cavlib.beans.User;
 
 public interface UserMapper {
     
-	public Boolean checkUserByUserName(String name);
+	public Integer checkUserByUserName(String name);
 	public String getPasswordByUserName(String name);
 	public User getUserInfoByUserName(String name);
-	public Boolean setIsBaned(Boolean is_baned);
+	public Boolean setIsBaned(@Param("is_baned") Boolean is_baned, @Param("name") String name);
 	public Boolean addUser(User user);
 	
 }

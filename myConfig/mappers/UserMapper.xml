@@ -4,20 +4,20 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cavlib.dao.UserMapper">
 
-	<select id="checkUserByUserName" resultType="int">
-		select　count(user_id) from user where name = #{name}
+	<select id="checkUserByUserName" resultType="integer">
+		select count(user_id) from user where name = #{name}
 	</select>
 	
 	<select id="getPasswordByUserName" resultType="string">
-		select　password from user where name = #{name}
+		select password from user where name = #{name}
 	</select>
 	
 	<select id="getUserInfoByUserName" resultType="com.cavlib.beans.User">
-		select　is_manager,is_baned from user where name = #{name}
+		select * from user where name = #{name}
 	</select>
 	
 	<update id="setIsBaned">
-	    update user set is_baned=#{is_baned} where name = #{name}
+	    update user set is_baned=#{is_baned} where name=#{name}
 	</update>
 	
 	<insert id="addUser" parameterType="com.cavlib.beans.User">

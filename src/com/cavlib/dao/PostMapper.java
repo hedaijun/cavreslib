@@ -13,7 +13,7 @@ public interface PostMapper {
 	public List<Post> getPostByTime(Date time);
 	public List<Post> getPostByUserId(int user_id);
 	public List<Post> getPostByType(String type);
-	public List<Post> getFivePost(int begin, String content, String type);
+	public List<Post> getFivePost(@Param("content") String content, @Param("type")String type);
 	
 	public boolean publishPost(@Param("post") Post post);
 	

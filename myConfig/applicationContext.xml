@@ -18,13 +18,14 @@
 	<context:property-placeholder location="classpath:db.properties" />
 	
 	<!-- 配置数据源 -->
-	<bean id="datasource"
+ 	<bean id="datasource" 
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${driver}" />
 		<property name="url" value="${url}" />
 		<property name="username" value="${user}" />
-		<property name="password" value="${password}" />
-	</bean>
+ 		<property name="password" value="${password}" />
+ 	</bean>   
+ 	
 	
 	<!-- 配置事务管理器 -->
 	<bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
@@ -50,6 +51,13 @@
 		<property name="dataSource" ref="datasource"></property>
 		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
 		<property name="mapperLocations" value="classpath:mappers/*.xml"></property>
+		<property name="plugins">
+		   <array>
+		      <bean class="com.github.pagehelper.PageInterceptor">
+		        <property name="properties"><value>param1=value1</value></property>
+		      </bean>
+		   </array>
+		</property>
 	</bean>
 	
 	<!--配置一个可以进行批量执行的sqlSession  -->
