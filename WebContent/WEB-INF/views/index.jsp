@@ -1,4 +1,4 @@
-<%@ page language="java" import="com.cavlib.beans.Post ,java.util.List"  pageEncoding="utf-8"%>
+<%@ page language="java" import="com.cavlib.beans.Post,com.cavlib.beans.User ,java.util.List"  pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -46,7 +46,7 @@
 											<h4 class="modal-title" id="myModalLabel">登陆</h4>
 									</div>
 									<div class="modal-body">
-										<form class="form-horizontal  col-md-12">
+										<form class="form-horizontal  col-md-12" method="post" action="/login">
 												<div class="form-group">
 														<label for="inputEmail3" class="col-sm-3 control-label">邮箱</label>
 														<div class="col-sm-7">
@@ -79,7 +79,7 @@
 											<h4 class="modal-title" id="myModalLabel">注册</h4>
 									</div>
 									<div class="modal-body">
-										<form class="form-horizontal  col-md-12">
+										<form class="form-horizontal  col-md-12"  method="post">
 												<div class="form-group">
 														<label for="inputEmail3" class="col-sm-3 control-label">邮箱</label>
 														<div class="col-sm-7">
@@ -117,22 +117,22 @@
 				 
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					<span class="navbar-toggler-icon"></span>
-				</button> <a class="navbar-brand" href="#">首页</a>
+				</button> <a class="navbar-brand" href="/getPosts?back=true">首页</a>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							 <a class="nav-link" href="#">讨论 <span class="sr-only">(current)</span></a>
+							 <a class="nav-link" href="/getPosts?tag=">讨论 <span class="sr-only">(current)</span></a>
 						</li>
 						<li class="nav-item">
-							 <a class="nav-link" href="#">资源</a>
+							 <a class="nav-link" href="/getPosts?tag=">资源</a>
 						</li>
 						
 					</ul>
 					
 					<ul class="navbar-nav ml-md-auto">
 						<!--搜索表单-->
-						<form class="form-inline">
-							<input class="form-control mr-sm-2" type="text" /> 
+						<form class="form-inline" method="post" action="/getPosts">
+							<input class="form-control mr-sm-2" id="keyword" type="text" /> 
 							<button class="btn btn-primary my-2 my-sm-0" type="submit">
 								Search
 							</button>
@@ -155,47 +155,67 @@
 			<p>
 				<%=post.getContent().substring(0, 50) %>
 			</p>
-			
+			<%if(session.getAttribute("user")!=null){ %>
 			<p>
 				<a class="btn btn-primary radius" href="#">View details »</a>
 			</p>
+				<%if(((User)(session.getAttribute("user"))).getIsManager()||post.getUser_id()==((User)(session.getAttribute("user"))).getId()){ %>
+			<p>
+				<a class="btn btn-danger radius" href="#">Delete</a>
+			</p>
+				<%} %>
+			<%} %>
+			
+			
 		</div>
 		<%} %>
 	</div>
 	<!--分页器,jsp根据数据库动态生成,显示5个页数摁钮、快速前进后退摁钮、前进后退摁钮-->
+	<%Integer pageindex=(Integer)(session.getAttribute("pageindex")); %>
 	<div class="col-md-12 pagenav">
 					<nav>
 						<ul class="pagination">
 							<!--普通按钮，点击一次到达相应页-->
 							<li class="page-item">
-								<a class="page-link" href="#">Previous</a>
+								<a class="page-link" href="/getPosts?pageindex=<%=pageindex-1 %>">Previous</a>
 							</li>
 							<!--快速跳过按钮，点击一次后退5页-->
 							<li class="page-item">
-								<a class="page-link" href="#">...</a>
+								<a class="page-link" href="/getPosts?pageindex=<%=pageindex-5 %>">...</a>
 							</li>
+							<%if(pageindex>=3) %>
 							<li class="page-item">
-								<a class="page-link" href="#">14</a>
+								<a class="page-link" href="/getPosts?pageindex=<%=pageindex-2 %>"><%=pageindex-2 %></a>
 							</li>
+							<%if(pageindex>=2) %>
 							<li class="page-item">
-								<a class="page-link" href="#">15</a>
+								<a class="page-link" href="/getPosts?pageindex=<%=pageindex-1 %>"><%=pageindex-1 %></a>
 							</li>
 							<!--当前页-->
 							<li class="page-item active" aria-current="page">
-								<a class="page-link" href="#">16 <span class="sr-only">(current)</span></a>
+								<a class="page-link" href="/getPosts?pageindex=<%=pageindex %>"><%=pageindex %> <span class="sr-only">(current)</span></a>
 							</li>
 							<li class="page-item">
-								<a class="page-link" href="#">17</a>
+								<a class="page-link" href="/getPosts?pageindex=<%=pageindex+1 %>"><%=pageindex+1 %></a>
 							</li>
 							<li class="page-item">
-								<a class="page-link" href="#">18</a>
+								<a class="page-link" href="/getPosts?pageindex=<%=pageindex+2 %>"><%=pageindex+2 %></a>
 							</li>
+							<%if(pageindex<=2) {%>
+							<li class="page-item">
+								<a class="page-link" href="/getPosts?pageindex=4">4</a>
+							</li>
+							<%if(pageindex==1) %>
+							<li class="page-item">
+								<a class="page-link" href="/getPosts?pageindex=5">5</a>
+							</li>
+							<%} %>
 							<!--快速跳过按钮，点击一次5前进页-->
 							<li class="page-item">
-								<a class="page-link" href="#">...</a>
+								<a class="page-link" href="/getPosts?pageindex=<%=pageindex+5 %>">...</a>
 							</li>
 							<li class="page-item">
-								<a class="page-link" href="#">Next</a>
+								<a class="page-link" href="/getPosts?pageindex=<%=pageindex+1 %>">Next</a>
 							</li>
 						</ul>
 					</nav>
