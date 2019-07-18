@@ -13,7 +13,7 @@
 	</select>
 	
 	<select id="getUserInfoByUserName" resultType="com.cavlib.beans.User">
-		select * from user where name = #{name}
+	    select * from user where name = #{name}
 	</select>
 	
 	<update id="setIsBaned">

@@ -48,20 +48,29 @@ public class TestServiceImpl implements TestService{
 	@Override
     public void testUser() {
 		User user = new User();
-//		user.setName("张三");
+//		user.setName("mary");
 //		user.setPassword("123456");
 //		user.setIsManager(false);
 //		user.setIsBaned(false);
+//		userMapper.addUser(user);
 //		for (int i = 0; i < 20; i++) {
 //			user.setName("张三"+i);
 //			userMapper.addUser(user);
 //		}
+		
 //		userMapper.checkUserByUserName("张三");
 //		System.out.println(userMapper.getPasswordByUserName("张三"));
-		System.out.println(userMapper.getUserInfoByUserName("张三"));
+		user = userMapper.getUserInfoByUserName("mary");
+		System.out.println(user);
 //		userMapper.setIsBaned(true, "张三");
     }
     
+	@Override
+	public void testGetPost() {
+		// TODO Auto-generated method stub
+		System.out.println(postMapper.getPostById(1));
+	}
+	
 	@Override
     public void testComment() {
     	

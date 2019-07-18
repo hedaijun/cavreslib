@@ -16,21 +16,23 @@ public class User implements Serializable {
 		
 	}
 
-	public User(Integer id, String name, String password,Boolean is_manager,Boolean is_baned) {
+	public User(Integer user_id, String name, String password,Boolean is_manager,Boolean is_baned) {
 		super();
-		this.user_id = id;
+		this.user_id = user_id;
 		this.name = name;
 		this.password = password;
 		this.is_manager = is_manager;
 		this.is_baned = is_baned;
 	}
-
-	public int getId() {
+	
+	public Integer getUserId() {
 		return user_id;
 	}
-	public void setId(Integer id) {
-		this.user_id = id;
+
+	public void setUserId(Integer user_id) {
+		this.user_id = user_id;
 	}
+
 	public String getName() {
 		return name;
 	}

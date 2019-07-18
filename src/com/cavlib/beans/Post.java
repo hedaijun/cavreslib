@@ -20,10 +20,10 @@ public class Post implements Serializable{
 	public void setType(String type) {
 		this.type = type;
 	}
-	public Integer getId() {
+	public Integer getPostId() {
 		return post_id;
 	}
-	public void setId(Integer post_id) {
+	public void setPostId(Integer post_id) {
 		this.post_id = post_id;
 	}
 	public String getTitle() {
