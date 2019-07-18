@@ -33,6 +33,7 @@ public class LoginController {
 		String username=(String)request.getParameter("loginUsername");
 		String password=(String)request.getParameter("loginPassword");
 		User user=loginService.login(username, password);
+		session.setAttribute("user", user);
 		System.out.println(user);
 		return "forward:/getPosts";
 	}

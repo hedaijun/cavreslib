@@ -188,7 +188,7 @@
 			<p>
 				<a class="btn btn-primary radius" href="#">View details »</a>
 			</p>
-				<%if(((User)(session.getAttribute("user"))).getIsManager()||post.getUser_id()==((User)(session.getAttribute("user"))).getId()){ %>
+				<%if(((User)(session.getAttribute("user"))).getIsManager()||post.getPostId()==((User)(session.getAttribute("user"))).getUserId()){ %>
 			<p>
 				<a class="btn btn-danger radius" href="#">Delete</a>
 			</p>
