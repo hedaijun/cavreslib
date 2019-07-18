@@ -89,19 +89,19 @@
 												<div class="form-group">
 														<label for="inputEmail3" class="col-sm-5 control-label">用户名</label>
 														<div class="col-sm-12">
-															<input type="text" class="form-control" id="reisterUsername" name="reisterUsername" required="required" pattern="[A-Za-z0-9]{6,30}" placeholder="Username">
+															<input type="text" class="form-control" id="registerUsername" name="registerUsername" required="required" pattern="[A-Za-z0-9]{6,30}" placeholder="Username">
 														</div>
 												</div>
 												<div class="form-group">
 														<label for="inputPassword3" class="col-sm-5 control-label">密码</label>
 														<div class="col-sm-12">
-															<input type="password" class="form-control" id="reisterPassword1" name="reisterPassword1" required="required" pattern="[A-Za-z0-9]{6,30}" placeholder="Password">
+															<input type="password" class="form-control" id="registerPassword1" name="registerPassword1" required="required" pattern="[A-Za-z0-9]{6,30}" placeholder="Password">
 														</div>
 												</div>
 												<div class="form-group">
 														<label for="inputPassword4" class="col-sm-5 control-label">确认密码</label>
 														<div class="col-sm-12">
-															<input type="password" class="form-control" id="reisterPassword2" name="reisterPassword2" placeholder="Confirm" required="required" pattern="[A-Za-z0-9]{6,30}">
+															<input type="password" class="form-control" id="registerPassword2" name="registerPassword2" placeholder="Confirm" required="required" pattern="[A-Za-z0-9]{6,30}">
 														</div>
 												</div>
 												<div class="form-group">
@@ -129,13 +129,49 @@
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 							<a class="dropdown-item" href="#">我的帖子</a> 
 							<a class="dropdown-item" href="#">编写新帖子</a> 
-							<a class="dropdown-item" href="#">注销</a>
+							<a class="dropdown-item" href="<%=basePath %>logoff">注销</a>
 						</div>
 					</div>
 				</div>
 				<%} %>
 			</div>
 			<div class="blank"></div>
+			<%if(session.getAttribute("user")==null){ 
+
+			%>
+				<%if(request.getAttribute("loginFail")!=null){ %>
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+				用户名或密码错误！
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+				<%}else if(request.getAttribute("registerFail")!=null){ %>
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+				注册失败！已有该用户
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+				<%} %>
+			<%} else{%>
+				<%if(request.getAttribute("loginSuccess")!=null){ %>
+			<div class="alert alert-success alert-dismissible fade show" role="alert">
+				登陆成功！
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+				<%}else if(request.getAttribute("registerSuccess")!=null){ %>
+			<div class="alert alert-success alert-dismissible fade show" role="alert">
+				注册成功！
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+				<%} %>
+			<%} %>
+
 			<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-dark radius">
 				 
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">

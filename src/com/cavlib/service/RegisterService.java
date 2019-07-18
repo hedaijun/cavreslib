@@ -1,5 +1,7 @@
 package com.cavlib.service;
 
-public interface RegisterService {
+import com.cavlib.beans.User;
 
+public interface RegisterService {
+	User register(String username,String password);
 }

@@ -22,5 +22,12 @@
 	<mvc:default-servlet-handler/>
 	
 	<mvc:resources location="static/css/" mapping="static/css/**"></mvc:resources>
+	
+	 <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.cavlib.interceptor.AllInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
 </beans>
