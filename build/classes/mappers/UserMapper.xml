@@ -20,9 +20,8 @@
 	    update user set is_baned=#{is_baned} where name=#{name}
 	</update>
 	
-	<insert id="addUser" parameterType="com.cavlib.beans.User">
-	    insert into user(name, password, is_manager, is_baned)
-	    values (#{name}, #{password}, #{is_manager}, #{is_baned})
+	<insert id="addUser">
+	    insert into user(name, password) values (#{name}, #{password})
 	</insert>
 	
 </mapper>
