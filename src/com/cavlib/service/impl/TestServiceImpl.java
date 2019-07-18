@@ -42,7 +42,7 @@ public class TestServiceImpl implements TestService{
 //			catch (Exception e) {
 //			}
 //		}
-		return postMapper.getFivePost("woshsuhf",null);
+		return postMapper.getFivePost("wosh","生活");
 	}
 	
 	@Override
@@ -60,7 +60,7 @@ public class TestServiceImpl implements TestService{
 		
 //		userMapper.checkUserByUserName("张三");
 //		System.out.println(userMapper.getPasswordByUserName("张三"));
-		user = userMapper.getUserInfoByUserName("mary");
+		user = userMapper.getUserInfoByUserName("awsdjl123");
 		System.out.println(user);
 //		userMapper.setIsBaned(true, "张三");
     }

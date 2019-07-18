@@ -28,13 +28,13 @@
          select * from post
          <where> 
          <if test="content != null and type == null">
-             content like #{content}
+             content like CONCAT('%',#{content},'%')
          </if> 
          <if test="type != null and content == null">
              type = #{type}
          </if>
          <if test="type != null and content != null">
-             type = #{type} and content like #{content}
+             type = #{type} and content like CONCAT('%',#{content},'%')
          </if>
          </where>
          order by time
