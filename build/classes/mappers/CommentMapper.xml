@@ -10,15 +10,15 @@
 	</insert>
 
 	<select id="getContentByPost" resultType="com.cavlib.beans.Comment">
-		select　* from comment where post_id = #{post_id}
+		select * from comment where post_id = #{post_id}
 	</select>
 	
 	<select id="getContentByUser" resultType="com.cavlib.beans.Comment">
-		select　* from comment where user_id = #{user_id}
+		select * from comment where user_id = #{user_id}
 	</select>
 	
 	<select id="getFiveContent" resultType="com.cavlib.beans.Comment">
-		select　* from comment where post_id = #{post_id} limit #{begin},5
+		select * from comment where post_id = #{post_id} limit #{begin},5
 	</select>
 	
 </mapper>
