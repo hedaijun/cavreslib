@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.cavlib.beans.User;
 import com.cavlib.service.LoginService;
 
 @Controller
@@ -23,10 +24,8 @@ public class LoginController {
 	public String login(Map<String,Object> map,HttpServletRequest request,HttpServletResponse response,HttpSession session) {
 		String username=(String)request.getParameter("loginUsername");
 		String password=(String)request.getParameter("loginPassword");
-		int id=loginService.login(username, password);
-		if(id>=0) {
-			session.setAttribute("user", loginService.getUser(username));
-		}
+		User user=loginService.login(username, password);
+		System.out.println(user);
 		return "forward:/getPosts";
 	}
 	

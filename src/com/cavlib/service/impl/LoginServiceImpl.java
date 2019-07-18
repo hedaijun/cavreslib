@@ -12,14 +12,10 @@ public class LoginServiceImpl implements LoginService {
 	@Autowired
 	UserMapper userMapper;
 	@Override
-	public int login(String username, String password) {
+	public User login(String username, String password) {
 		User user =userMapper.getUserInfoByUserName(username);
-		if(user!=null&&user.getPassword().equals(password)) return user.getId();
-		return -1;
+		if(user!=null&&user.getPassword().equals(password)) return user;
+		return null;
 	}
-	@Override
-	public User getUser(String username) {
-		// TODO Auto-generated method stub
-		return userMapper.getUserInfoByUserName(username);
-	}
+
 }
