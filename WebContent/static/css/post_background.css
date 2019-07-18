@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+div.back{
+	background: #e9ecef;
+	 border-radius:20px;
+	 padding: 10px;
+     margin : 2px 17px;	
+	 opacity: 0.95;
+}
+div.back2{
+	background: #e9ecef;
+	 border-radius:20px;
+	 padding: 10px;	
+	 margin : 2px 0px;	
+	 opacity: 0.95;
+}
+div.post-title{
+	font-size:70px
+}
