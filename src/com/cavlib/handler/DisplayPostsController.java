@@ -19,6 +19,11 @@ public class DisplayPostsController {
 	@Autowired
 	private DisplayPostsService displayPostsService;
 	
+	@RequestMapping("/")
+	public String defaultPage(Map<String,Object> map,HttpServletRequest request,HttpServletResponse response,HttpSession session) {
+		return "forward:/getPosts";
+	}
+	
 	@RequestMapping("/getPosts")
 	public String getPosts(Map<String,Object> map,HttpServletRequest request,HttpServletResponse response,HttpSession session) {
 		int page=1;
@@ -31,7 +36,7 @@ public class DisplayPostsController {
 		if(request.getParameter("back")!=null) {
 			tag=null;
 			keyword=null;
-			page=0;
+			page=1;
 		}
 		List<Post> posts = displayPostsService.loadPage(page,tag,keyword);
 		session.setAttribute("tag", tag);
@@ -40,4 +45,5 @@ public class DisplayPostsController {
 		session.setAttribute("posts", posts);
 		return "index";
 	}
-}
+	
+} 

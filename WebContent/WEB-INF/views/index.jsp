@@ -14,7 +14,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="static/css/background.css" />
-    <title>Hello, world!</title>
+    <title>Cavlib</title>
   </head>
   <body>
    <div class="container-fluid">
@@ -180,7 +180,7 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							 <a class="nav-link" href="getPosts?tag=生活">讨论 <span class="sr-only">(current)</span></a>
+							 <a class="nav-link <%=session.getAttribute("tag")!=null&&session.getAttribute("tag").equals("生活")?"active":"" %>" href="getPosts?tag=生活">讨论 <span class="sr-only">(current)</span></a>
 						</li>
 						<li class="nav-item">
 							 <a class="nav-link" href="getPosts?tag=">资源</a>
@@ -223,15 +223,20 @@
 			<%if(session.getAttribute("user")!=null){ %>
 			<p>
 				<a class="btn btn-primary radius" href="<%=basePath %>post?post_id=<%=post.getPostId()%>">View details »</a>
-			</p>
-				<%if(((User)(session.getAttribute("user"))).getIsManager()||post.getPostId()==((User)(session.getAttribute("user"))).getUserId()){ %>
-			<p>
+				<%if(((User)(session.getAttribute("user"))).getIsManager()||post.getPostId()==((User)(session.getAttribute("user"))).getUserId()){ %>	
 				<a class="btn btn-danger radius" href="#">Delete</a>
 			</p>
 				<%} %>
 			<%} %>
 			
 			
+		</div>
+		<%} %>
+		<%if(((List<Post>) session.getAttribute("posts")).size()==0){ %>
+		<div class="col-md-11 passage">
+			<h2 class="passage">
+				已经没有帖子了哦！
+			</h2>
 		</div>
 		<%} %>
 	</div>
