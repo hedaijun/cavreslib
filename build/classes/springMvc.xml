@@ -22,6 +22,9 @@
 	<mvc:default-servlet-handler/>
 	
 	<mvc:resources location="static/css/" mapping="static/css/**"></mvc:resources>
+	<mvc:resources location="static/js/" mapping="static/js/**"></mvc:resources>
+	<mvc:resources location="static/resources/" mapping="static/resources/**"></mvc:resources>
+	<mvc:resources location="static/temp/" mapping="static/temp/**"></mvc:resources>
 	
 	 <mvc:interceptors>
         <mvc:interceptor>
