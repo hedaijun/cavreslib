@@ -1,5 +1,6 @@
 package com.cavlib.handler;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
@@ -22,6 +23,13 @@ public class LoginController {
 	
 	@RequestMapping("/login")
 	public String login(Map<String,Object> map,HttpServletRequest request,HttpServletResponse response,HttpSession session) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+			response.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		String username=(String)request.getParameter("loginUsername");
 		String password=(String)request.getParameter("loginPassword");
 		User user=loginService.login(username, password);
