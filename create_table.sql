@@ -2,8 +2,8 @@ CREATE TABLE user(
    user_id INT NOT NULL AUTO_INCREMENT,
    name VARCHAR(30) NOT NULL,
    password VARCHAR(30) NOT NULL,
-   is_manager TINYINT NOT NULL,
-   is_baned TINYINT NOT NULL,
+   is_manager TINYINT NOT NULL DEFAULT 0,
+   is_baned TINYINT NOT NULL DEFAULT 0,
    PRIMARY KEY (user_id)
 );
 
