@@ -31,12 +31,6 @@ public class BrowsePostController {
 		Post post =postContentService.getPostContent(postId);
 		map.put("post", post);
 		map.put("comment", comment);
-		System.out.println(comment.get(0).toString());
-//		Comment test = new Comment();
-//		test.setPost_id(123);
-//		test.setUser_id(1231);
-//		test.setContent("fuck you2");
-//		commentService.setComment(test);
 		}
 		catch(NumberFormatException e) {
 			e.printStackTrace();

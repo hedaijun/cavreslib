@@ -186,7 +186,7 @@
 			<%} %>
 			<%if(session.getAttribute("user")!=null){ %>
 			<p>
-				<a class="btn btn-primary radius" href="#">View details »</a>
+				<a class="btn btn-primary radius" href="<%=basePath %>post?post_id=<%=post.getPostId()%>">View details »</a>
 			</p>
 				<%if(((User)(session.getAttribute("user"))).getIsManager()||post.getPostId()==((User)(session.getAttribute("user"))).getUserId()){ %>
 			<p>
