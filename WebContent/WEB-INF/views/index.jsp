@@ -191,7 +191,7 @@
 					<ul class="navbar-nav ml-md-auto">
 						<!--搜索表单-->
 						<form class="form-inline" method="post" action="<%=basePath %>getPosts">
-							<input class="form-control mr-sm-2" id="keyword" type="text" /> 
+							<input class="form-control mr-sm-2" id="keyword" name="keyword" type="text" /> 
 							<button class="btn btn-primary my-2 my-sm-0" type="submit">
 								Search
 							</button>
