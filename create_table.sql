@@ -9,8 +9,8 @@ CREATE TABLE user(
 
 CREATE TABLE post(
    post_id INT NOT NULL AUTO_INCREMENT,
-   title VARCHAR(100) NOT NULL,
-   time  TIMESTAMP NOT NULL DEFAULT current_timestamp
+   title VARCHAR(250) NOT NULL,
+   time  TIMESTAMP NOT NULL DEFAULT current_timestamp,
    content TEXT NOT NULL,
    link  VARCHAR(100) NOT NULL,
    user_id INT NOT NULL,
