@@ -180,7 +180,7 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							 <a class="nav-link" href="getPosts?tag=">讨论 <span class="sr-only">(current)</span></a>
+							 <a class="nav-link" href="getPosts?tag=生活">讨论 <span class="sr-only">(current)</span></a>
 						</li>
 						<li class="nav-item">
 							 <a class="nav-link" href="getPosts?tag=">资源</a>
@@ -268,15 +268,15 @@
 							<li class="page-item">
 								<a class="page-link" href="<%=basePath %>getPosts?pageindex=<%=pageindex+2 %>"><%=pageindex+2 %></a>
 							</li>
-							<%if(pageindex<=2) {%>
+							<%if(pageindex==1) {%>
 							<li class="page-item">
 								<a class="page-link" href="<%=basePath %>getPosts?pageindex=4">4</a>
 							</li>
-							<%if(pageindex==1) {%>
+							<%} %>
+							<%if(pageindex<=2) {%>
 							<li class="page-item">
 								<a class="page-link" href="<%=basePath %>getPosts?pageindex=5">5</a>
 							</li>
-							<%} %>
 							<%} %>
 							<!--快速跳过按钮，点击一次5前进页-->
 							<li class="page-item">

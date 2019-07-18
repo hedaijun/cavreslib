@@ -26,13 +26,13 @@ public class DisplayPostsController {
 		if(page<1) page=1;
 		String tag= (String)session.getAttribute("tag");
 		String keyword= (String)session.getAttribute("keyword");
+		if(request.getParameter("tag")!=null) tag=request.getParameter("tag");
+		if(request.getParameter("keyword")!=null) keyword=request.getParameter("keyword");
 		if(request.getParameter("back")!=null) {
 			tag=null;
 			keyword=null;
 			page=0;
 		}
-		if(request.getParameter("tag")!=null) tag=request.getParameter("tag");
-		if(request.getParameter("keyword")!=null) keyword=request.getParameter("keyword");
 		List<Post> posts = displayPostsService.loadPage(page,tag,keyword);
 		session.setAttribute("tag", tag);
 		session.setAttribute("keyword", keyword);
