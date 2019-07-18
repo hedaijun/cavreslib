@@ -27,11 +27,14 @@
 	<select id="getFivePost" resultType="com.cavlib.beans.Post">
          select * from post
          <where> 
-         <if test="content != null">
+         <if test="content != null and type == null">
              content like #{content}
          </if> 
-         <if test="type != null">
+         <if test="type != null and content == null">
              type = #{type}
+         </if>
+         <if test="type != null and content != null">
+             type = #{type} and content like #{content}
          </if>
          </where>
          order by time
