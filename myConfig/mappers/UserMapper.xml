@@ -16,6 +16,10 @@
 	    select * from user where name = #{name}
 	</select>
 	
+	<select id="getUserNameByUserId" resultType="string">
+	    select name from user where user_id = #{user_id}
+	</select>
+	
 	<update id="setIsBaned">
 	    update user set is_baned=#{is_baned} where name=#{name}
 	</update>
