@@ -26,6 +26,7 @@ public class DisplayPostsController {
 	
 	@RequestMapping("/getPosts")
 	public String getPosts(Map<String,Object> map,HttpServletRequest request,HttpServletResponse response,HttpSession session) {
+		if(session.getAttribute("tag")==null) session.setAttribute("tag", "全部");
 		int page=1;
 		if(request.getParameter("pageindex")!=null) page= Integer.valueOf(request.getParameter("pageindex"));
 		if(page<1) page=1;
@@ -34,7 +35,7 @@ public class DisplayPostsController {
 		if(request.getParameter("tag")!=null) tag=request.getParameter("tag");
 		if(request.getParameter("keyword")!=null) keyword=request.getParameter("keyword");
 		if(request.getParameter("back")!=null) {
-			tag=null;
+			tag="全部";
 			keyword=null;
 			page=1;
 		}

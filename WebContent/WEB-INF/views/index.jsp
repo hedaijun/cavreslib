@@ -180,18 +180,21 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							 <a class="nav-link <%=session.getAttribute("tag")!=null&&session.getAttribute("tag").equals("生活")?"active":"" %>" href="getPosts?tag=生活">讨论 <span class="sr-only">(current)</span></a>
 						</li>
-						<li class="nav-item">
-							 <a class="nav-link" href="getPosts?tag=">资源</a>
-						</li>
+						
 						
 					</ul>
 					
 					<ul class="navbar-nav ml-md-auto">
 						<!--搜索表单-->
 						<form class="form-inline" method="post" action="<%=basePath %>getPosts">
-							<input class="form-control mr-sm-2" id="keyword" name="keyword" type="text" /> 
+							<select class="form-control" id="tag" name="tag">
+								<option <%=session.getAttribute("tag").equals("全部")?"selected":"" %>>全部</option>
+								<option <%=session.getAttribute("tag").equals("生活")?"selected":"" %>>生活</option>
+								<option <%=session.getAttribute("tag").equals("资源")?"selected":"" %>>资源</option>
+								<option <%=session.getAttribute("tag").equals("讨论")?"selected":"" %>>讨论</option>
+							</select>
+							<input class="form-control mr-sm-2" id="keyword" name="keyword" type="text" <%=session.getAttribute("keyword")!=null?"value=\""+session.getAttribute("keyword")+"\"":"" %>/> 
 							<button class="btn btn-primary my-2 my-sm-0" type="submit">
 								Search
 							</button>

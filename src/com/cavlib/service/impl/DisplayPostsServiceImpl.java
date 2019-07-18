@@ -21,7 +21,8 @@ public class DisplayPostsServiceImpl implements DisplayPostsService {
 	public List<Post> loadPage(int page,String tag, String keyWord) {
 		// TODO Auto-generated method stub
 		PageHelper.startPage(page,5);
-		return postMapper.getFivePost(keyWord, tag);
+		return tag.equals("全部")?postMapper.getFivePost(keyWord, null):postMapper.getFivePost(keyWord, tag);
+		
 		
 	}
 	
