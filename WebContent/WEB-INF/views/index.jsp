@@ -229,12 +229,10 @@
 				<%=post.getContent() %>
 			</p>
 			<%} %>
-			<%if(session.getAttribute("user")!=null){
-				System.out.println(((User)(session.getAttribute("user"))).getUserId()+" "+post.getUser_id());
-				%>
+			<%if(session.getAttribute("user")!=null){%>
 			<p>
 				<a class="btn btn-primary radius" href="<%=basePath %>post?post_id=<%=post.getPostId()%>">View details »</a>
-				<%if(((User)(session.getAttribute("user"))).getIsManager()||((User)(session.getAttribute("user"))).getUserId().equals(post.getUser_id())){ %>	
+				<%if(((User)(session.getAttribute("user"))).getIsManager()||((User)(session.getAttribute("user"))).getUserId().equals(post.getUserId())){ %>	
 				<a class="btn btn-danger radius" href="#">Delete</a>
 				<%} %>
 			</p>
