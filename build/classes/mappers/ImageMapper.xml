@@ -5,7 +5,7 @@
 <mapper namespace="com.cavlib.dao.ImageMapper">
 
 	<select id="getImageByPostId" resultType="string">
-		select url from image where post_id = #{post_id}
+		select url from image where post_id = #{post_id} order by null
 	</select>
 	
 	<insert id="addImage" parameterType="com.cavlib.beans.Image">

@@ -22,12 +22,12 @@ public class TestController {
 	
 	@RequestMapping("/test")
 	public String test() {
-//		PageHelper.startPage(1,5);
-//		List<Post> postList = testService.testPost();
-//		for (Post post : postList) {
-//			System.out.println(post);
-//		}
-		testService.testImage();
+		PageHelper.startPage(1,5);
+		List<Post> postList = testService.testPost();
+		for (Post post : postList) {
+			System.out.println(post);
+		}
+//		testService.testPost();
 		return "test";
 	}
 }

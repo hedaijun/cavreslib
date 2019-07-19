@@ -12,7 +12,7 @@ CREATE TABLE post(
    title VARCHAR(250) NOT NULL,
    time  TIMESTAMP NOT NULL DEFAULT current_timestamp,
    content TEXT NOT NULL,
-   link  VARCHAR(100) NOT NULL,
+   link  VARCHAR(300) NOT NULL,
    user_id INT NOT NULL,
    type VARCHAR(10) NOT NULL,
    PRIMARY KEY (post_id)
@@ -28,6 +28,5 @@ CREATE TABLE comment(
 
 CREATE TABLE image(
    post_id INT NOT NULL,
-   url VARCHAR(100) NOT NULL,
-   PRIMARY KEY (post_id, url)
+   url VARCHAR(250) NOT NULL,
 );
