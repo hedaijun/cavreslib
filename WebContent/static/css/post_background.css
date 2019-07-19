@@ -4,7 +4,7 @@ div.back{
 	background: #e9ecef;
 	 border-radius:20px;
 	 padding: 10px;
-     margin : 2px 17px;	
+     margin : 2px 16px;	
 	 opacity: 0.95;
 }
 div.back2{
@@ -14,6 +14,7 @@ div.back2{
 	 margin : 2px 0px;	
 	 opacity: 0.95;
 }
+
 div.post-title{
-	font-size:70px
+	font-size:90px
 }

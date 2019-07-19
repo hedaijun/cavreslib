@@ -1,4 +1,6 @@
 <%@ page language="java" import="com.cavlib.beans.Post,com.cavlib.beans.User ,java.util.List"  pageEncoding="utf-8"%>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="com.cavlib.beans.*" %>
 <%  
  String path = request.getContextPath();  
  String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";  
@@ -10,12 +12,27 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+	
+	<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="static/css/background.css" />
 	<link rel="stylesheet" type="text/css" href="static/css/post_background.css" />
-    <title>Hello, world!</title>
+    <title>post</title>
+<!-- =================================================================java script========================================================================= -->>   
+
+
+<script type="text/javascript">
+    window.onload=function(){
+        var add = document.getElementById("getLink");
+        add.onclick=function(){
+
+                        document.getElementById("result").innerText = "<%=((Post)request.getAttribute("post")).getLink()%>";
+                        //根据服务器返回的内容更新需要更新的内容
+        };
+    };
+</script>
+<!-- =================================================================/java script========================================================================= -->>
   </head>
   <body>
    <div class="container-fluid">
@@ -170,35 +187,40 @@
 	<!-- =================================================================以上逻辑复制index.jsp========================================================================= -->>
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-10 back">
+		<div class="col-md-8 back">
 			<div class="post-title">
 				<h3>
-					h3. Lorem ipsum dolor sit amet.
+					<strong>
+					
+						<%=((Post)request.getAttribute("post")).getTitle() %>
+					</strong>
 				</h3>
 			</div>
 		</div>
-		<div class="col-md-10 back">
-		info
+		<div class="col-md-5 back">
+		<% SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm"); %>
+		<%="发帖时间："+df.format(((Post)request.getAttribute("post")).getTime())+" &nbsp&nbsp&nbsp类型：" +((Post)request.getAttribute("post")).getType() %>
 		</div>
-		<div class="col-md-10 back">
-			<img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg" />
+		<div class="col-md-10 back img-responsive">
+		<%for(String simg: (List<String>)request.getAttribute("imgs")) {%>
+			<img alt="static/resources/<%=simg %>" src="static/resources/<%=simg %>" >
 			<br><br>
-			<img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg" />
-			<br><br>
+			<%} %>
 			<p>
-				Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>. Aliquam eget sapien sapien. Curabitur in metus urna. In hac habitasse platea dictumst. Phasellus eu sem sapien, sed vestibulum velit. Nam purus nibh, lacinia non faucibus et, pharetra in dolor. Sed iaculis posuere diam ut cursus. <em>Morbi commodo sodales nisi id sodales. Proin consectetur, nisi id commodo imperdiet, metus nunc consequat lectus, id bibendum diam velit et dui.</em> Proin massa magna, vulputate nec bibendum nec, posuere nec lacus. <small>Aliquam mi erat, aliquam vel luctus eu, pharetra quis elit. Nulla euismod ultrices massa, et feugiat ipsum consequat eu.</small>
-				Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>. Aliquam eget sapien sapien. Curabitur in metus urna. In hac habitasse platea dictumst. Phasellus eu sem sapien, sed vestibulum velit. Nam purus nibh, lacinia non faucibus et, pharetra in dolor. Sed iaculis posuere diam ut cursus. <em>Morbi commodo sodales nisi id sodales. Proin consectetur, nisi id commodo imperdiet, metus nunc consequat lectus, id bibendum diam velit et dui.</em> Proin massa magna, vulputate nec bibendum nec, posuere nec lacus. <small>Aliquam mi erat, aliquam vel luctus eu, pharetra quis elit. Nulla euismod ultrices massa, et feugiat ipsum consequat eu.</small>			
+			<%=((Post)request.getAttribute("post")).getContent() %>
 			</p>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-6 back">
 			<h2>
-				Link
+				<button type="button" id="getLink" class="btn btn-success">
+					GET
+				</button>
+				<font size="3"><span id="result"></span></font><br><br>
+				<a href="<%=((Post)request.getAttribute("post")).getLink()%>" class="btn btn-primary btn-md" type="button">Link</a> 
 			</h2>
-			<button type="button" class="btn btn-success">
-				Button
-			</button>
+
 		</div>
 		<div class="col-md-6" back>
 		</div>
@@ -211,78 +233,38 @@
 	</div>
 	
 	<div class="col-md-10 back2">
-		<form role="form">
-			<div class="form-group">	 
-				<label for="exampleInputEmail1">
-					Comment
-				</label>
-				<input type="text" class="form-control" id="exampleInputEmail1" />
+		<form action="post/submitComment" method="get">
+			<div class="form-group">	
+				<textarea name="commentText" class="form-control" rows="6"  /></textarea>
+				<input type="hidden" name="post_id" value="<%=((Post)request.getAttribute("post")).getPostId()%>" />
 			</div>
-			<button type="submit" class="btn btn-primary">
-				Submit
-			</button>
+			<input type="submit" class="btn btn-primary" value="Comment" />			
 		</form>
 	</div>
-
 		<div class="col-md-10 back2">
 			<table class="table">
 				<tbody>
+				<%for(Comment comment: (List<Comment>)request.getAttribute("comment")) {%>
 					<tr class="table-warning">
 						<td>
-							3
+							<img alt="image not found" src="static/resources/nazoshinshi.jpg" onload='this.width=90; this.height=90;' >
 						</td>
 						<td>
-							TB - Monthly
+							<%=comment.getContent() %>
 						</td>
 						<td>
-							03/04/2012
+							<%=String.valueOf(comment.getUserId()) %>	
 						</td>
 						<td>
-							Pending
+							<%=df.format(comment.getTime()) %>
 						</td>
+
 					</tr>
-										<tr class="table-warning">
-						<td>
-							3
-						</td>
-						<td>
-							TB - Monthly
-						</td>
-						<td>
-							03/04/2012
-						</td>
-						<td>
-							Pending
-						</td>
-					</tr>
-										<tr class="table-warning">
-						<td>
-							3
-						</td>
-						<td>
-							TB - Monthly
-						</td>
-						<td>
-							03/04/2012
-						</td>
-						<td>
-							Pending
-						</td>
-					</tr>
-										<tr class="table-warning">
-						<td>
-							3
-						</td>
-						<td>
-							TB - Monthly
-						</td>
-						<td>
-							03/04/2012
-						</td>
-						<td>
-							Pending
-						</td>
-					</tr>
+					
+					<%} %>
+									
+									
+										
 				</tbody>
 			</table>
 		</div>
