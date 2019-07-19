@@ -2,10 +2,10 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cavlib.dao.UserMapper">
+<mapper namespace="com.cavlib.dao.ImageMapper">
 
 	<select id="getImageByPostId" resultType="string">
-		select url from user where post_id = #{post_id}
+		select url from image where post_id = #{post_id}
 	</select>
 	
 	<insert id="addImage" parameterType="com.cavlib.beans.Image">

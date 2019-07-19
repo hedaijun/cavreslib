@@ -78,7 +78,7 @@ public class TestServiceImpl implements TestService{
     
 	@Override
     public void testImage() {
-    	    List<String> image = imageMapper.getImageByPostId(69);
+    	    List<String> image = imageMapper.getImageByPostId(50);
     	    for (String name : image) {
 				System.out.println(name);
 			}
