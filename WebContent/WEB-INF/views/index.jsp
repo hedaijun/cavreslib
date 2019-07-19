@@ -90,19 +90,19 @@
 												<div class="form-group">
 														<label for="inputEmail3" class="col-sm-5 control-label">用户名</label>
 														<div class="col-sm-12">
-															<input type="text" class="form-control" id="registerUsername" name="registerUsername" required="required" pattern="[A-Za-z0-9]{6,30}" placeholder="Username" data-toggle="tooltip" title="输入不少于6位的数字与字母" data-placement="right" data-trigger="click">
+															<input type="text" class="form-control" id="registerUsername" name="registerUsername" required="required" pattern="[A-Za-z0-9]{6,30}" placeholder="Username" data-toggle="tooltip" title="输入不少于6位的数字与字母" data-placement="right" data-trigger="hover">
 														</div>
 												</div>
 												<div class="form-group">
 														<label for="inputPassword3" class="col-sm-5 control-label">密码</label>
 														<div class="col-sm-12">
-															<input type="password" class="form-control" id="registerPassword1" name="registerPassword1" required="required" pattern="[A-Za-z0-9]{6,30}" placeholder="Password" data-toggle="tooltip" title="输入不少于6位的数字与字母" data-placement="right" data-trigger="click">
+															<input type="password" class="form-control" id="registerPassword1" name="registerPassword1" required="required" pattern="[A-Za-z0-9]{6,30}" placeholder="Password" data-toggle="tooltip" title="输入不少于6位的数字与字母" data-placement="right" data-trigger="hover">
 														</div>
 												</div>
 												<div class="form-group">
 														<label for="inputPassword4" class="col-sm-5 control-label">确认密码</label>
 														<div class="col-sm-12">
-															<input type="password" class="form-control" id="registerPassword2" name="registerPassword2" placeholder="Confirm" required="required" pattern="[A-Za-z0-9]{6,30}" data-toggle="tooltip" title="输入不少于6位的数字与字母" data-placement="right" data-trigger="click">
+															<input type="password" class="form-control" id="registerPassword2" name="registerPassword2" placeholder="Confirm" required="required" pattern="[A-Za-z0-9]{6,30}" data-toggle="tooltip" title="输入不少于6位的数字与字母" data-placement="right" data-trigger="hover">
 														</div>
 												</div>
 												<div class="form-group">
