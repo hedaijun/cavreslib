@@ -12,25 +12,27 @@
 
     <title>Hello, world!</title>
 	<link rel="shortcut icon" href="static/resoures/icon.ico">
+	<link rel="bookmark" href="static/resoures/icon.ico">
 	
   </head>
   <body>
    <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-11">
 			<div class="row">
 				<!--标题-->
-				<div class="col-md-12">
+				<div class="col-md-11">
 						<h2 class="font-weight-bold welcome">
-							欢迎来到CAVLIB
+							<img src="static/resources/icon.ico" class="img-fluid header">
+							<img src="static/resources/head1.png" class="img-fluid header">
+							
 						</h2>
 
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-11">
-				</div>
-				<div class="col-md-1">
+			
+			
+
+				<div class="col-md-1 m-auto">
 					<div class="dropdown">
 				 
 						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
@@ -99,21 +101,21 @@
 									<div class="modal-body">
 										<form class="form-horizontal  col-md-12" id="registerForm" name="registerForm" method="post" action="/register">
 												<div class="form-group">
-														<label for="inputEmail3" class="col-sm-5 control-label">用户名</label>
+														<label for="inputEmail3" class="col-sm-5 control-label" >用户名</label>
 														<div class="col-sm-12">
-															<input type="text" class="form-control" id="reisterUsername" name="reisterUsername" required="required" pattern="[A-Za-z0-9]{6,30}" placeholder="Username">
+															<input type="text" class="form-control" id="reisterUsername" name="reisterUsername" required="required" pattern="[A-Za-z0-9]{6,30}" placeholder="Username" data-toggle="tooltip" title="输入不少于6位的数字与字母" data-placement="right" data-trigger="hover">
 														</div>
 												</div>
 												<div class="form-group">
 														<label for="inputPassword3" class="col-sm-5 control-label">密码</label>
 														<div class="col-sm-12">
-															<input type="password" class="form-control" id="reisterPassword1" name="reisterPassword1" required="required" pattern="[A-Za-z0-9]{6,30}" placeholder="Password">
+															<input type="password" class="form-control" id="reisterPassword1" name="reisterPassword1" required="required" pattern="[A-Za-z0-9]{6,30}" placeholder="Password" data-toggle="tooltip" title="输入不少于6位的数字与字母" data-placement="right" data-trigger="hover">
 														</div>
 												</div>
 												<div class="form-group">
 														<label for="inputPassword4" class="col-sm-5 control-label">确认密码</label>
 														<div class="col-sm-12">
-															<input type="password" class="form-control" id="reisterPassword2" name="reisterPassword2" placeholder="Confirm" required="required" pattern="[A-Za-z0-9]{6,30}">
+															<input type="password" class="form-control" id="reisterPassword2" name="reisterPassword2" placeholder="Confirm" required="required" pattern="[A-Za-z0-9]{6,30}" data-toggle="tooltip" title="输入不少于6位的数字与字母" data-placement="right" data-trigger="hover">
 														</div>
 												</div>
 												<div class="form-group">
@@ -126,6 +128,11 @@
 							</div><!-- /.modal-content -->
 						</div><!-- /.modal-dialog -->
 					</div>
+					<script>
+						$(function(){
+							$('[data-toggle="tooltip"]').tooltip(); // 也可以使用 $('#text').tooltip(); 来启用弹窗
+						});
+					</script>
 					
 					
 				</div>
@@ -138,10 +145,9 @@
 				</button>
 			</div>
 			<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-dark radius">
-				 
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					<span class="navbar-toggler-icon"></span>
-				</button> <a class="navbar-brand" href="#">首页</a>
+				</button> <a class="navbar-brand col-2 " href="#">首页</a>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="navbar-nav">
 						<li>

@@ -14,6 +14,10 @@ div.passage{
 	 opacity: 0.8;
 }
 
+img.header{
+	opacity: 0.8;
+}
+
 h2.welcome{
 
 	margin:10px;
@@ -31,7 +35,7 @@ div.pagenav{
 
 
 body{
-    background-image:url(../resoures/background.jpg);
+    background-image:url(../resources/background.jpg);
 	background-attachment:fixed;
      background-size: cover;
 	 
