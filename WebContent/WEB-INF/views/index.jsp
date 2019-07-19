@@ -1,4 +1,4 @@
-<%@ page language="java" import="com.cavlib.beans.Post,com.cavlib.beans.User ,java.util.List"  pageEncoding="utf-8"%>
+<%@ page language="java" import="com.cavlib.beans.Post,com.cavlib.beans.User ,java.util.List,java.util.Map"  pageEncoding="utf-8"%>
 <%  
  String path = request.getContextPath();  
  String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";  
@@ -10,7 +10,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+	
+	<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="static/css/background.css" />
@@ -214,13 +215,19 @@
 	<!-- =================================================================以上逻辑复制index.jsp========================================================================= -->>
 	<!--文章容器div，jsp动态加入文章-->
 	<div class="row ">
-	<% List<Post> posts=(List<Post>) request.getAttribute("posts");%>
+	<% 
+	List<Post> posts=(List<Post>) request.getAttribute("posts");
+	Map<Integer,String> imgs=(Map<Integer,String>) request.getAttribute("imgs");
+	%>
 	<div class="col-md-3">
 	<%
 	for(int i=0;i<posts.size()/4&&i<posts.size();i++) {
 		Post post=posts.get(i);
 	%>
 		<div class="row passage">
+		<%if(imgs.get(post.getPostId())!=null){ %>
+			<img class="img-responsive" src="static/resources/<%=imgs.get(post.getPostId()) %>">
+		<%} %>
 		<p class="passage">
 				<strong><%=post.getTitle() %></strong>
 			</p>
@@ -253,6 +260,9 @@
 		Post post=posts.get(i);
 	%>
 		<div class="row passage">
+		<%if(imgs.get(post.getPostId())!=null){ %>
+			<img class="img-responsive" src="static/resources/<%=imgs.get(post.getPostId()) %>">
+		<%} %>
 		<p class="passage">
 				<strong><%=post.getTitle() %></strong>
 			</p>
@@ -286,6 +296,9 @@
 		Post post=posts.get(i);
 	%>
 		<div class="row passage">
+		<%if(imgs.get(post.getPostId())!=null){ %>
+			<img class="img-responsive" src="static/resources/<%=imgs.get(post.getPostId()) %>">
+		<%} %>
 		<p class="passage">
 				<strong><%=post.getTitle() %></strong>
 			</p>
@@ -318,6 +331,9 @@
 		Post post=posts.get(i);
 	%>
 		<div class="row passage">
+		<%if(imgs.get(post.getPostId())!=null){ %>
+			<img class="img-responsive" src="static/resources/<%=imgs.get(post.getPostId()) %>">
+		<%} %>
 		<p class="passage">
 				<strong><%=post.getTitle() %></strong>
 			</p>

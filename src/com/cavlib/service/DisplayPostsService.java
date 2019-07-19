@@ -7,6 +7,6 @@ import com.cavlib.beans.Post;
 
 public interface DisplayPostsService {
 
-	List<Post> loadPage(int page,String tag, String keyWord);
-
+	List<Post> loadPosts(int page,String tag, String keyWord);
+	Map<Integer,String> loadImgs(List<Post> posts);
 }

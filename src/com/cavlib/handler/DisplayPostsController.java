@@ -39,11 +39,13 @@ public class DisplayPostsController {
 			keyword=null;
 			page=1;
 		}
-		List<Post> posts = displayPostsService.loadPage(page,tag,keyword);
+		List<Post> posts = displayPostsService.loadPosts(page,tag,keyword);
+		Map<Integer,String> imgs=displayPostsService.loadImgs(posts);
 		session.setAttribute("tag", tag);
 		session.setAttribute("keyword", keyword);
 		session.setAttribute("pageindex", page);
 		request.setAttribute("posts", posts);
+		request.setAttribute("imgs", imgs);
 		return "index";
 	}
 	
