@@ -7,16 +7,16 @@ public class Image implements Serializable{
 
 	private int post_id;
 	private String url;
-	public int getPost_id() {
+	public int getPostId() {
 		return post_id;
 	}
-	public void setPost_id(int post_id) {
+	public void setPostId(int post_id) {
 		this.post_id = post_id;
 	}
-	public String getImage_url() {
+	public String getUrl() {
 		return url;
 	}
-	public void setImage_url(String url) {
+	public void setUrl(String url) {
 		this.url = url;
 	}
 

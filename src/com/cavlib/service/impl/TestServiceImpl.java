@@ -42,7 +42,7 @@ public class TestServiceImpl implements TestService{
 //			catch (Exception e) {
 //			}
 //		}
-		return postMapper.getFivePost("wosh","生活");
+		return postMapper.getFivePost(null,"电影");
 	}
 	
 	@Override

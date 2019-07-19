@@ -10,16 +10,16 @@ public class Comment implements Serializable{
 	private int post_id;
 	private Timestamp time;
 	private String content;
-	public int getUser_id() {
+	public int getUserId() {
 		return user_id;
 	}
-	public void setUser_id(int user_id) {
+	public void setUserId(int user_id) {
 		this.user_id = user_id;
 	}
-	public int getPost_id() {
+	public int getPostId() {
 		return post_id;
 	}
-	public void setPost_id(int post_id) {
+	public void setPostId(int post_id) {
 		this.post_id = post_id;
 	}
 	public Timestamp getTime() {
