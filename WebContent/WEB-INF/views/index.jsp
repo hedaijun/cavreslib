@@ -214,12 +214,16 @@
 	<!-- =================================================================以上逻辑复制index.jsp========================================================================= -->>
 	<!--文章容器div，jsp动态加入文章-->
 	<div class="row ">
-		<!--标准文章div-->
-		<%for(Post post:(List<Post>) session.getAttribute("posts")) {%>
-		<div class="col-md-11 passage">
-			<h2 class="passage">
-				<%=post.getTitle() %>
-			</h2>
+	<% List<Post> posts=(List<Post>) request.getAttribute("posts");%>
+	<div class="col-md-3">
+	<%
+	for(int i=0;i<posts.size()/4&&i<posts.size();i++) {
+		Post post=posts.get(i);
+	%>
+		<div class="row passage">
+		<p class="passage">
+				<strong><%=post.getTitle() %></strong>
+			</p>
 			<%if(post.getContent().length()>20){ %>
 			<p>
 				<%=post.getContent().substring(0, 20) %>
@@ -238,11 +242,112 @@
 			</p>
 				
 			<%} %>
-			
-			
 		</div>
 		<%} %>
-		<%if(((List<Post>) session.getAttribute("posts")).size()==0){ %>
+		</div>
+		
+		
+		<div class="col-md-3">
+	<%
+	for(int i=posts.size()/4;i<posts.size()*2/4&&i<posts.size();i++) {
+		Post post=posts.get(i);
+	%>
+		<div class="row passage">
+		<p class="passage">
+				<strong><%=post.getTitle() %></strong>
+			</p>
+			<%if(post.getContent().length()>20){ %>
+			<p>
+				<%=post.getContent().substring(0, 20) %>
+			</p>
+			<%} else{%>
+			<p>
+				<%=post.getContent() %>
+			</p>
+			<%} %>
+			<%if(session.getAttribute("user")!=null){%>
+			<p>
+				<a class="btn btn-primary radius" href="<%=basePath %>post?post_id=<%=post.getPostId()%>">View details »</a>
+				<%if(((User)(session.getAttribute("user"))).getIsManager()||((User)(session.getAttribute("user"))).getUserId().equals(post.getUserId())){ %>	
+				<a class="btn btn-danger radius" href="#">Delete</a>
+				<%} %>
+			</p>
+				
+			<%} %>
+		</div>
+		<%} %>
+		</div>
+		
+		
+		
+		<div class="col-md-3">
+	<%
+	for(int i=posts.size()*2/4;i<posts.size()*3/4&&i<posts.size();i++) {
+		Post post=posts.get(i);
+	%>
+		<div class="row passage">
+		<p class="passage">
+				<strong><%=post.getTitle() %></strong>
+			</p>
+			<%if(post.getContent().length()>20){ %>
+			<p>
+				<%=post.getContent().substring(0, 20) %>
+			</p>
+			<%} else{%>
+			<p>
+				<%=post.getContent() %>
+			</p>
+			<%} %>
+			<%if(session.getAttribute("user")!=null){%>
+			<p>
+				<a class="btn btn-primary radius" href="<%=basePath %>post?post_id=<%=post.getPostId()%>">View details »</a>
+				<%if(((User)(session.getAttribute("user"))).getIsManager()||((User)(session.getAttribute("user"))).getUserId().equals(post.getUserId())){ %>	
+				<a class="btn btn-danger radius" href="#">Delete</a>
+				<%} %>
+			</p>
+				
+			<%} %>
+		</div>
+		<%} %>
+		</div>
+		
+		
+		<div class="col-md-3">
+	<%
+	for(int i=posts.size()*3/4;i<posts.size();i++) {
+		Post post=posts.get(i);
+	%>
+		<div class="row passage">
+		<p class="passage">
+				<strong><%=post.getTitle() %></strong>
+			</p>
+			<%if(post.getContent().length()>20){ %>
+			<p>
+				<%=post.getContent().substring(0, 20) %>
+			</p>
+			<%} else{%>
+			<p>
+				<%=post.getContent() %>
+			</p>
+			<%} %>
+			<%if(session.getAttribute("user")!=null){%>
+			<p>
+				<a class="btn btn-primary radius" href="<%=basePath %>post?post_id=<%=post.getPostId()%>">View details »</a>
+				<%if(((User)(session.getAttribute("user"))).getIsManager()||((User)(session.getAttribute("user"))).getUserId().equals(post.getUserId())){ %>	
+				<a class="btn btn-danger radius" href="#">Delete</a>
+				<%} %>
+			</p>
+				
+			<%} %>
+		</div>
+		<%} %>
+		</div>
+		
+		
+		
+		
+		
+		<%if(((List<Post>) request.getAttribute("posts")).size()==0){ %>
 		<div class="col-md-11 passage">
 			<h2 class="passage">
 				已经没有帖子了哦！

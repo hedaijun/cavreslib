@@ -43,7 +43,7 @@ public class DisplayPostsController {
 		session.setAttribute("tag", tag);
 		session.setAttribute("keyword", keyword);
 		session.setAttribute("pageindex", page);
-		session.setAttribute("posts", posts);
+		request.setAttribute("posts", posts);
 		return "index";
 	}
 	

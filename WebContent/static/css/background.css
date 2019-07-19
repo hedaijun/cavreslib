@@ -10,8 +10,8 @@ div.passage{
 	background: #e9ecef;
 	 border-radius:20px;
 	 padding: 10px;
-	 margin : 25px;
-	 opacity: 0.8;
+	 margin : 10px;
+	 opacity: 0.9;
 }
 
 img.header{
@@ -39,6 +39,13 @@ body{
 	background-attachment:fixed;
      background-size: cover;
 	 
+}
+
+.img-responsive {
+	border-radius: 10px;
+  display: block;
+  height: auto;
+  max-width: 100%;
 }
 
 .radius{
