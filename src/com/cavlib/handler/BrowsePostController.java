@@ -39,6 +39,8 @@ public class BrowsePostController {
 	//	post.setContent(post.getContent().replace(" ", "<br>"));
 		List<String> imgs = postContentService.getPostImg(postId);
 		post.setContent(post.getContent().replace("\r\n", "<br>"));
+		post.setContent(post.getContent().replace("\r", "<br>"));
+		post.setContent(post.getContent().replace("\n", "<br>"));
 		request.setAttribute("imgs", imgs);
 		request.setAttribute("post", post);
 		request.setAttribute("comment", comment);
