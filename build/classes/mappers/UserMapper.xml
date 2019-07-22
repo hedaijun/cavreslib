@@ -28,4 +28,8 @@
 	    insert into user(name, password) values (#{name}, #{password})
 	</insert>
 	
+	<select id="getUsers" resultType="com.cavlib.beans.User">
+		select * from user where is_manager = 0
+	</select>
+	
 </mapper>
