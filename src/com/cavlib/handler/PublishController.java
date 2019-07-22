@@ -25,12 +25,17 @@ import com.cavlib.service.ImageService;
 import com.cavlib.service.PublishService;
 
 @Controller
-public class publishController {
+public class PublishController {
 
 	@Autowired
 	private PublishService publishService;
 	@Autowired
 	private ImageService imageService;
+	
+	@RequestMapping("/publishPage")
+	public String getPublishPage() {
+		return "publish";
+	}
 	
 	@RequestMapping("/publish")
 	public String publishPost(HttpServletRequest request,HttpServletResponse reponse,HttpSession session,
@@ -56,8 +61,8 @@ public class publishController {
 			String ext = FilenameUtils.getExtension(mf.getOriginalFilename());  
 			// 设置图片上传路径
 			String url = request.getSession().getServletContext().getRealPath("/resources");
-			img.setUrl(url);
-			System.out.println(url);
+			img.setUrl(name);
+			
 			// 以绝对路径保存重名命后的图片
 			mf.transferTo(new File(url + "/" + name + "." + ext));			
 			// 把图片信息保存到数据库
@@ -74,6 +79,6 @@ public class publishController {
 		count++;
 	}  
 
-		return "index";
+		return "forward:/getPosts";
 	}
 }

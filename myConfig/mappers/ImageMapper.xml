@@ -9,7 +9,7 @@
 	</select>
 	
 	<insert id="addImage" parameterType="com.cavlib.beans.Image">
-	    insert into user(post_id, url)
+	    insert into image(post_id, url)
 	    values (#{post_id}, #{url})
 	</insert>
 	
