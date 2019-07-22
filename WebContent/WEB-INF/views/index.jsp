@@ -27,8 +27,9 @@
 				<!--标题-->
 				<div class="col-md-11">
 						<h2 class="font-weight-bold welcome">
-							<img src="static/resources/icon.ico" class="img-fluid header">
-							<img src="static/resources/head1.png" class="img-fluid header">
+							<img src="static/resources/head3.ico" class="img-fluid">
+							<img src="static/resources/head.png" class="img-fluid header">
+							<img src="static/resources/head2.ico" class="img-fluid">
 						</h2>
 
 				</div>

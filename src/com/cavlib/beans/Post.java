@@ -14,6 +14,14 @@ public class Post implements Serializable{
 	private String type;
 	private int user_id;
 	
+	public Post(String title,String link,String content,String type,int user_id) {
+		this.title = title;
+		this.link =link;
+		this.content = content;
+		this.type =type;
+		this.user_id = user_id;
+		
+	}
 	public String getType() {
 		return type;
 	}

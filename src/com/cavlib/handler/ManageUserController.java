@@ -28,9 +28,9 @@ public class ManageUserController {
 	@RequestMapping("/getpage")
 	public String getUsers(Map<String,Object> map,HttpServletRequest request,HttpServletResponse response,HttpSession session) {
 		int page=1;
-		if(request.getParameter("pageindex")!=null) page= Integer.valueOf(request.getParameter("pageindex"));
+		if(request.getParameter("userpage")!=null) page= Integer.valueOf(request.getParameter("userpage"));
 		if(page<1) page=1;
-		session.setAttribute("pageindex", page);
+		session.setAttribute("userpage", page);
 		List<User> users = manageUserService.loadPage(page);
 		map.put("users", users);
 		return "userManager";

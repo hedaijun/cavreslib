@@ -16,8 +16,8 @@ public interface PostMapper {
 	public List<Post> getFivePost(@Param("content") String content, @Param("type")String type);
 	public List<Post> getAllDeletePost();
 	
-	public boolean publishPost(@Param("post") Post post);
-	
+    public void publishPost(@Param("post") Post post);
+//	public void publishPost(String title,String content,String link,int user_id,String type);
 	public boolean deletePost(int post_id);
 	
 	
