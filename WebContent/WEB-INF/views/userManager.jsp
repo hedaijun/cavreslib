@@ -301,31 +301,31 @@
 		<!-- =================================================================以上逻辑复制index.jsp========================================================================= -->
 		<!--分页器,jsp根据数据库动态生成,显示5个页数摁钮、快速前进后退摁钮、前进后退摁钮-->
 		<%
-			Integer pageindex = (Integer) (session.getAttribute("pageindex"));
+			Integer userpage = (Integer) (session.getAttribute("userpage"));
 		%>
 		<div class="col-md-12 pagenav">
 			<nav>
 				<ul class="pagination">
 					<!--普通按钮，点击一次到达相应页-->
 					<li class="page-item"><a class="page-link"
-						href="<%=basePath%>getpage?pageindex=<%=pageindex - 1%>">上一页</a></li>
+						href="<%=basePath%>getpage?userpage=<%=userpage - 1%>">上一页</a></li>
 					<!--快速跳过按钮，点击一次后退5页-->
 					<li class="page-item"><a class="page-link"
-						href="<%=basePath%>getpage?pageindex=<%=pageindex - 5%>">...</a></li>
+						href="<%=basePath%>getpage?userpage=<%=userpage - 5%>">...</a></li>
 					<%
-						if (pageindex >= 3) {
+						if (userpage >= 3) {
 					%>
 					<li class="page-item"><a class="page-link"
-						href="<%=basePath%>getpage?pageindex=<%=pageindex - 2%>"><%=pageindex - 2%></a>
+						href="<%=basePath%>getpage?userpage=<%=userpage - 2%>"><%=userpage - 2%></a>
 					</li>
 					<%
 						}
 					%>
 					<%
-						if (pageindex >= 2) {
+						if (userpage >= 2) {
 					%>
 					<li class="page-item"><a class="page-link"
-						href="<%=basePath%>getpage?pageindex=<%=pageindex - 1%>"><%=pageindex - 1%></a>
+						href="<%=basePath%>getpage?userpage=<%=userpage - 1%>"><%=userpage - 1%></a>
 					</li>
 					<%
 						}
@@ -333,35 +333,35 @@
 					<!--当前页-->
 					<li class="page-item active" aria-current="page"><a
 						class="page-link"
-						href="<%=basePath%>getpage?pageindex=<%=pageindex%>"><%=pageindex%>
+						href="<%=basePath%>getpage?userpage=<%=userpage%>"><%=userpage%>
 							<span class="sr-only">(current)</span></a></li>
 					<li class="page-item"><a class="page-link"
-						href="<%=basePath%>getpage?pageindex=<%=pageindex + 1%>"><%=pageindex + 1%></a>
+						href="<%=basePath%>getpage?userpage=<%=userpage + 1%>"><%=userpage + 1%></a>
 					</li>
 					<li class="page-item"><a class="page-link"
-						href="<%=basePath%>getpage?pageindex=<%=pageindex + 2%>"><%=pageindex + 2%></a>
+						href="<%=basePath%>getpage?userpage=<%=userpage + 2%>"><%=userpage + 2%></a>
 					</li>
 					<%
-						if (pageindex == 1) {
+						if (userpage == 1) {
 					%>
 					<li class="page-item"><a class="page-link"
-						href="<%=basePath%>getpage?pageindex=4">4</a></li>
+						href="<%=basePath%>getpage?userpage=4">4</a></li>
 					<%
 						}
 					%>
 					<%
-						if (pageindex <= 2) {
+						if (userpage <= 2) {
 					%>
 					<li class="page-item"><a class="page-link"
-						href="<%=basePath%>getpage?pageindex=5">5</a></li>
+						href="<%=basePath%>getpage?userpage=5">5</a></li>
 					<%
 						}
 					%>
 					<!--快速跳过按钮，点击一次5前进页-->
 					<li class="page-item"><a class="page-link"
-						href="<%=basePath%>getpage?pageindex=<%=pageindex + 5%>">...</a></li>
+						href="<%=basePath%>getpage?userpage=<%=userpage + 5%>">...</a></li>
 					<li class="page-item"><a class="page-link"
-						href="<%=basePath%>getpage?pageindex=<%=pageindex + 1%>">下一页</a></li>
+						href="<%=basePath%>getpage?userpage=<%=userpage + 1%>">下一页</a></li>
 				</ul>
 			</nav>
 		</div>
