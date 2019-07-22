@@ -4,12 +4,15 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +42,7 @@ public class PublishController {
 	
 	@RequestMapping("/publish")
 	public String publishPost(HttpServletRequest request,HttpServletResponse reponse,HttpSession session,
-			@RequestParam(value="file",required=false) MultipartFile[] file) throws IllegalStateException, IOException {
+			@RequestParam(value="file",required=false) MultipartFile[] file) throws IllegalStateException, IOException, ServletException {
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		String link = request.getParameter("link");
@@ -61,20 +64,33 @@ public class PublishController {
 			String ext = FilenameUtils.getExtension(mf.getOriginalFilename());  
 			// 设置图片上传路径
 			String url = request.getSession().getServletContext().getRealPath("/resources");
-			img.setUrl(name);
+			img.setUrl(name+"."+ext);
+			
+			 request.setCharacterEncoding("UTF-8");
+		        Part part = request.getPart("file");
+		        String inputName=part.getName();
+		        InputStream input=part.getInputStream();
+		        //想要保存的目标文件的目录下
+		        String tagDir= url;
+		        //避免文件名重复使用uuid来避免,产生一个随机的uuid字符
+//		        String realFileName=UUID.randomUUID().toString();
+		        OutputStream output=new FileOutputStream(new File(tagDir,name));
+		        int len=0;
+		        byte[] buff=new byte[1024*8];
+		         
+		        while ((len = input.read(buff)) > -1) {
+		            output.write(buff, 0, len);
+		        }
+		 
+		        input.close();
+		        output.close();
+		        reponse.setCharacterEncoding("utf-8");
 			
 			// 以绝对路径保存重名命后的图片
 			mf.transferTo(new File(url + "/" + name + "." + ext));			
 			// 把图片信息保存到数据库
 			imageService.addImage(img);
-//			String path="resources/" + name + "." + ext;
-//			if(count==1){
-//				img.setImg1(path);
-//			}else if(count==2){
-//				img.setImg2(path);
-//			}else if(count==3){
-//				img.setImg3(path);
-//			}
+
 		}  
 		count++;
 	}  
