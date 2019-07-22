@@ -46,7 +46,7 @@
 	</insert>
 	
 	<delete id="deletePost" parameterType="int">
-	    delect from post where post_id = #{post_id};  
+	    delete from post where post_id = #{post_id};  
 	</delete>
 	
 </mapper>
