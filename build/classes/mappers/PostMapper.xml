@@ -40,7 +40,7 @@
          order by time
     </select>
 	
-	<insert id="publishPost" parameterType="com.cavlib.beans.Post">
+	<insert id="publishPost" parameterType="com.cavlib.beans.Post" useGeneratedKeys="true" keyProperty="post_id">
 	    insert into post(title, content, link, user_id, type)
 	    values (#{post.title}, #{post.content}, #{post.link}, #{post.user_id}, #{post.type});
 	</insert>
