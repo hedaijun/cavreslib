@@ -27,7 +27,7 @@ public class AdminManagePostServiceIpml implements AdminManagePostService{
 	public List<Post> loadDeletePage(int page,String tag, String keyWord) {
 		// TODO Auto-generated method stub
 		PageHelper.startPage(page,100);
-		return tag.equals("全部")?postMapper.getFivePost(keyWord, null):postMapper.getFivePost(keyWord, tag);
+		return postMapper.getAllDeletePost();
 		
 		
 	}

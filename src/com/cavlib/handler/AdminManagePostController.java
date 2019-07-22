@@ -32,11 +32,11 @@ public class AdminManagePostController {
 		for (int i =0;i<deletePost_id.length;i++) {
 			adminManagePostService.deletePost(Integer.parseInt(deletePost_id[i]));
 		}
-		return "forward:/getPosts";
+		return "forward:/toManager";
 	}
 	@RequestMapping("/toManager")
 	public String toManager() {
-		return "Manager";
+		return "forward:/getDeletePosts";
 	}
 	
 	@RequestMapping("/deleteSingleUser")

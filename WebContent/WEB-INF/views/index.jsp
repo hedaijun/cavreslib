@@ -236,7 +236,7 @@
 			<p>
 				<a class="btn btn-primary radius" href="<%=basePath %>post?post_id=<%=post.getPostId()%>">View details »</a>
 				<%if(((User)(session.getAttribute("user"))).getIsManager()||((User)(session.getAttribute("user"))).getUserId().equals(post.getUserId())){ %>	
-				<a class="btn btn-danger radius" href="#">Delete</a>
+				<a class="btn btn-danger radius" href="<%=basePath %>deleteSingleUser?post_id=<%=post.getPostId()%>">Delete</a>
 				<%} %>
 			</p>
 				

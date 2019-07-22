@@ -210,45 +210,7 @@
 	<!--文章容器div，jsp动态加入文章-->
 	<form action="<%=basePath %>deletePosts" method = "post">
 	<input type="submit" value="确定批量删除">
-	<div class="row ">
-		<!--标准文章div-->
-		<%for(Post post:(List<Post>) session.getAttribute("deletePosts")) {%>
-		<div class="col-md-11 passage">
-			<h2 class="passage">
-				<%=post.getTitle() %>
-			</h2>
-			<%if(post.getContent().length()>20){ %>
-			<p>
-				<%=post.getContent().substring(0, 20) %>
-			</p>
-			<%} else{%>
-			<p>
-				<%=post.getContent() %>
-			</p>
-			<%} %>
-			<%if(session.getAttribute("user")!=null){ %>
-			<p>
-				<a class="btn btn-primary radius" href="<%=basePath %>post?post_id=<%=post.getPostId()%>">View details »</a>
-				<%if(((User)(session.getAttribute("user"))).getIsManager()||post.getPostId()==((User)(session.getAttribute("user"))).getUserId()){ %>	
-				<a class="btn btn-danger radius" href="<%=basePath %>deleteSingleUser?post_id=<%=post.getPostId()%>">Delete</a>
-			</p>
-			<p>
-				<!--input type="checkbox" name="post_id" id=<%=post.getPostId()%> value=<%=post.getPostId()%>/-->
-			</p>
-				<%} %>
-			<%} %>
-			
-			
-		</div>
-		<%} %>
-		<%if(((List<Post>) session.getAttribute("posts")).size()==0){ %>
-		<div class="col-md-11 passage">
-			<h2 class="passage">
-				已经没有帖子了哦！
-			</h2>
-		</div>
-		<%} %>
-	</div>
+
 
 	
 	
@@ -271,7 +233,7 @@
 
   <tbody id="checklist">
   <%int i=1;%>
-    <%for(Post post:(List<Post>) session.getAttribute("posts")) {%>
+    <%for(Post post:(List<Post>) session.getAttribute("deletePosts")) {%>
 
     <tr>
       <th scope="row"><%=i%></th>
@@ -290,7 +252,7 @@
       
       
       <td><%=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(post.getTime())%></td>
-	  <td><%=post.getUser_id()%></td>
+	  <td><%=post.getUserId()%></td>
 	  <td><%=post.getType()%></td>
 
 	   <td>
