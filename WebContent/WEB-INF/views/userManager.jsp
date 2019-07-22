@@ -267,30 +267,30 @@
 			</div>
 			<div class="row ">
 			<!-- 循环输出非管理员账号信息 -->
-			<c:forEach items="${users}" var="user">
-				<c:if test="${user.getIsBaned()==false}">
+			<c:forEach items="${users}" var="generaluser">
+				<c:if test="${generaluser.getIsBaned()==false}">
 					<div class="col-md-9 tablerow">
 						<div class="row">
-							<div class="col-md-4">${user.getUserId()}</div>
-							<div class="col-md-4">${user.name}</div>
+							<div class="col-md-4">${generaluser.getUserId()}</div>
+							<div class="col-md-4">${generaluser.name}</div>
 							<div class="col-md-4">未封禁</div>
 						</div>
 					</div>
 					<a
-						href="<%=request.getContextPath()%>/setbane?is_baned=true&name=${user.name}">
+						href="<%=request.getContextPath()%>/setbane?is_baned=true&name=${generaluser.name}">
 						<button type="button" class="btn btn-primary">封禁</button>
 					</a>
 				</c:if>
-				<c:if test="${user.getIsBaned()==true}">
+				<c:if test="${generaluser.getIsBaned()==true}">
 					<div class="col-md-9 tablerow">
 						<div class="row">
-							<div class="col-md-4">${user.getUserId()}</div>
-							<div class="col-md-4">${user.name}</div>
+							<div class="col-md-4">${generaluser.getUserId()}</div>
+							<div class="col-md-4">${generaluser.name}</div>
 							<div class="col-md-4">已封禁</div>
 						</div>
 					</div>
 					<a
-						href="<%=request.getContextPath()%>/setbane?is_baned=false&name=${user.name}">
+						href="<%=request.getContextPath()%>/setbane?is_baned=false&name=${generaluser.name}">
 						<button type="button" class="btn btn-primary">解禁</button>
 					</a>
 				</c:if>
