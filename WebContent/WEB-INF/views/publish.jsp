@@ -264,9 +264,7 @@
 	</div>
 	
 	    <div class="file-loading">
-            <input type="file" name="file" /><br/>	
-            <input type="file" name="file" /><br/>		
-            <input type="file" name="file" /><br/><!--这个name=“file”并不是数据库的属性名哦-->
+            <input type="file" name="file" multiple="multiple"/><br/>	
         </div>
 
 <!--         <button type="submit" class="btn btn-primary">Submit</button> -->
