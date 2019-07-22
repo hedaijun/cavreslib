@@ -13,7 +13,6 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/aspectj-weaver.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-logging-1.2.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/junit-4.10.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mysql-connector-java-8.0.11.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-aop-4.3.9.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-aspects-4.3.9.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-beans-4.3.9.RELEASE.jar"/>
@@ -35,5 +34,7 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/log4j-core-2.11.2.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jsqlparser-0.9.5.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/pagehelper-5.1.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mysql-connector-java-8.0.11.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-io-2.6.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
