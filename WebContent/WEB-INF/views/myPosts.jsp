@@ -130,7 +130,7 @@
 							<%=((User)session.getAttribute("user")).getName() %>
 						</button>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							<a class="dropdown-item" href="<%=basePath %>getMyPosts">我的帖子</a> 
+							<a class="dropdown-item" href="#">我的帖子</a> 
 							<a class="dropdown-item" href="#">编写新帖子</a> 
 							<%if(((User)session.getAttribute("user")).getIsManager()){ %>
 							<a class="dropdown-item" href="<%=basePath %>logoff">管理帖子</a>
@@ -217,108 +217,23 @@
 	<div class="row ">
 	<% 
 	List<Post> posts=(List<Post>) request.getAttribute("posts");
-	Map<Integer,String> imgs=(Map<Integer,String>) request.getAttribute("imgs");
 	%>
-	<div class="col-md-3">
+	
+		
+		<div class="col-md-12">
 	<%
-	for(int i=0;i<posts.size()/4&&i<posts.size();i++) {
+	for(int i=0;i<posts.size();i++) {
 		Post post=posts.get(i);
 	%>
 		<div class="row passage">
-		<%if(imgs.get(post.getPostId())!=null){ %>
-			<img class="img-responsive" src="static/resources/<%=imgs.get(post.getPostId()) %>">
-		<%} %>
 		<p class="passage">
 				<strong><%=post.getTitle() %></strong>
 			</p>
-			
 			<%if(session.getAttribute("user")!=null){%>
 			<p>
 				<a class="btn btn-primary radius" href="<%=basePath %>post?post_id=<%=post.getPostId()%>">View details »</a>
 				<%if(((User)(session.getAttribute("user"))).getIsManager()||((User)(session.getAttribute("user"))).getUserId().equals(post.getUserId())){ %>	
-				<a class="btn btn-danger radius" href="<%=basePath %>deleteSingleUser?post_id=<%=post.getPostId()%>">Delete</a>
-				<%} %>
-			</p>
-				
-			<%} %>
-		</div>
-		<%} %>
-		</div>
-		
-		
-		<div class="col-md-3">
-	<%
-	for(int i=posts.size()/4;i<posts.size()*2/4&&i<posts.size();i++) {
-		Post post=posts.get(i);
-	%>
-		<div class="row passage">
-		<%if(imgs.get(post.getPostId())!=null){ %>
-			<img class="img-responsive" src="static/resources/<%=imgs.get(post.getPostId()) %>">
-		<%} %>
-		<p class="passage">
-				<strong><%=post.getTitle() %></strong>
-			</p>
-			
-			<%if(session.getAttribute("user")!=null){%>
-			<p>
-				<a class="btn btn-primary radius" href="<%=basePath %>post?post_id=<%=post.getPostId()%>">View details »</a>
-				<%if(((User)(session.getAttribute("user"))).getIsManager()||((User)(session.getAttribute("user"))).getUserId().equals(post.getUserId())){ %>	
-				<a class="btn btn-danger radius" href="<%=basePath %>deleteSingleUser?post_id=<%=post.getPostId()%>">Delete</a>
-				<%} %>
-			</p>
-				
-			<%} %>
-		</div>
-		<%} %>
-		</div>
-		
-		
-		
-		<div class="col-md-3">
-	<%
-	for(int i=posts.size()*2/4;i<posts.size()*3/4&&i<posts.size();i++) {
-		Post post=posts.get(i);
-	%>
-		<div class="row passage">
-		<%if(imgs.get(post.getPostId())!=null){ %>
-			<img class="img-responsive" src="static/resources/<%=imgs.get(post.getPostId()) %>">
-		<%} %>
-		<p class="passage">
-				<strong><%=post.getTitle() %></strong>
-			</p>
-
-			<%if(session.getAttribute("user")!=null){%>
-			<p>
-				<a class="btn btn-primary radius" href="<%=basePath %>post?post_id=<%=post.getPostId()%>">View details »</a>
-				<%if(((User)(session.getAttribute("user"))).getIsManager()||((User)(session.getAttribute("user"))).getUserId().equals(post.getUserId())){ %>	
-				<a class="btn btn-danger radius" href="<%=basePath %>deleteSingleUser?post_id=<%=post.getPostId()%>">Delete</a>
-				<%} %>
-			</p>
-				
-			<%} %>
-		</div>
-		<%} %>
-		</div>
-		
-		
-		<div class="col-md-3">
-	<%
-	for(int i=posts.size()*3/4;i<posts.size();i++) {
-		Post post=posts.get(i);
-	%>
-		<div class="row passage">
-		<%if(imgs.get(post.getPostId())!=null){ %>
-			<img class="img-responsive" src="static/resources/<%=imgs.get(post.getPostId()) %>">
-		<%} %>
-		<p class="passage">
-				<strong><%=post.getTitle() %></strong>
-			</p>
-			
-			<%if(session.getAttribute("user")!=null){%>
-			<p>
-				<a class="btn btn-primary radius" href="<%=basePath %>post?post_id=<%=post.getPostId()%>">View details »</a>
-				<%if(((User)(session.getAttribute("user"))).getIsManager()||((User)(session.getAttribute("user"))).getUserId().equals(post.getUserId())){ %>	
-				<a class="btn btn-danger radius" href="<%=basePath %>deleteSingleUser?post_id=<%=post.getPostId()%>">Delete</a>
+				<a class="btn btn-danger radius" href="#">Delete</a>
 				<%} %>
 			</p>
 				
@@ -334,64 +249,13 @@
 		<%if(((List<Post>) request.getAttribute("posts")).size()==0){ %>
 		<div class="col-md-11 passage">
 			<h2 class="passage">
-				已经没有帖子了哦！
+				你还没有发布帖子哦！
 			</h2>
 		</div>
 		<%} %>
 	</div>
-	<!--分页器,jsp根据数据库动态生成,显示5个页数摁钮、快速前进后退摁钮、前进后退摁钮-->
-	<%Integer pageindex=(Integer)(session.getAttribute("pageindex")); %>
-	<div class="col-md-12 pagenav">
-					<nav>
-						<ul class="pagination">
-							<!--普通按钮，点击一次到达相应页-->
-							<li class="page-item">
-								<a class="page-link" href="<%=basePath %>getPosts?pageindex=<%=pageindex-1 %>">Previous</a>
-							</li>
-							<!--快速跳过按钮，点击一次后退5页-->
-							<li class="page-item">
-								<a class="page-link" href="<%=basePath %>getPosts?pageindex=<%=pageindex-5 %>">...</a>
-							</li>
-							<%if(pageindex>=3) {%>
-							<li class="page-item">
-								<a class="page-link" href="<%=basePath %>getPosts?pageindex=<%=pageindex-2 %>"><%=pageindex-2 %></a>
-							</li>
-							<%} %>
-							<%if(pageindex>=2) {%>
-							<li class="page-item">
-								<a class="page-link" href="<%=basePath %>getPosts?pageindex=<%=pageindex-1 %>"><%=pageindex-1 %></a>
-							</li>
-							<%} %>
-							<!--当前页-->
-							<li class="page-item active" aria-current="page">
-								<a class="page-link" href="<%=basePath %>getPosts?pageindex=<%=pageindex %>"><%=pageindex %> <span class="sr-only">(current)</span></a>
-							</li>
-							<li class="page-item">
-								<a class="page-link" href="<%=basePath %>getPosts?pageindex=<%=pageindex+1 %>"><%=pageindex+1 %></a>
-							</li>
-							<li class="page-item">
-								<a class="page-link" href="<%=basePath %>getPosts?pageindex=<%=pageindex+2 %>"><%=pageindex+2 %></a>
-							</li>
-							<%if(pageindex==1) {%>
-							<li class="page-item">
-								<a class="page-link" href="<%=basePath %>getPosts?pageindex=4">4</a>
-							</li>
-							<%} %>
-							<%if(pageindex<=2) {%>
-							<li class="page-item">
-								<a class="page-link" href="<%=basePath %>getPosts?pageindex=5">5</a>
-							</li>
-							<%} %>
-							<!--快速跳过按钮，点击一次5前进页-->
-							<li class="page-item">
-								<a class="page-link" href="<%=basePath %>getPosts?pageindex=<%=pageindex+5 %>">...</a>
-							</li>
-							<li class="page-item">
-								<a class="page-link" href="<%=basePath %>getPosts?pageindex=<%=pageindex+1 %>">Next</a>
-							</li>
-						</ul>
-					</nav>
-				</div>
+
+	
 </div>
 
     <!-- Optional JavaScript -->

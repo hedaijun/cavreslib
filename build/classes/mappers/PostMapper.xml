@@ -39,6 +39,10 @@
          </where>
          order by time
     </select>
+    
+	<select id="getAllDeletePost" resultType="com.cavlib.beans.Post">
+	    select * from post order by time
+	</select>
 	
 	<insert id="publishPost" parameterType="com.cavlib.beans.Post" useGeneratedKeys="true" keyProperty="post_id">
 	    insert into post(title, content, link, user_id, type)
@@ -46,7 +50,7 @@
 	</insert>
 	
 	<delete id="deletePost" parameterType="int">
-	    delect from post where post_id = #{post_id};  
+	    delete from post where post_id = #{post_id};  
 	</delete>
 	
 </mapper>

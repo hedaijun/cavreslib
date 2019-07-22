@@ -29,7 +29,13 @@ public class DisplayPostsServiceImpl implements DisplayPostsService {
 		PageHelper.startPage(page,8);
 		return tag.equals("全部")?postMapper.getFivePost(keyWord, null):postMapper.getFivePost(keyWord, tag);
 	}
-
+	
+	@Override
+	public List<Post> loadMyPosts(int userID) {
+		// TODO Auto-generated method stub
+		return postMapper.getPostByUserId(userID);
+	}
+	
 	@Override
 	public Map<Integer, String> loadImgs(List<Post> posts) {
 		// TODO Auto-generated method stub
