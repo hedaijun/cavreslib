@@ -13,4 +13,8 @@
 	    values (#{post_id}, #{url})
 	</insert>
 	
+	<delete id="deleteImage" parameterType="int">
+	    delete from image where post_id = #{post_id}
+	</delete>
+	
 </mapper>
