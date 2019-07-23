@@ -52,7 +52,7 @@ body{
 }
 
 .img-responsive {
-	border-radius: 10px;
+  border-radius: 10px;
   display: block;
   height: auto;
   max-width: 100%;

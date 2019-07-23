@@ -229,6 +229,7 @@
 		<%if(imgs.get(post.getPostId())!=null){ %>
 			<img class="img-responsive" src="static/resources/<%=imgs.get(post.getPostId()) %>">
 		<%} %>
+		
 		<p class="passage">
 				<strong><%=post.getTitle() %></strong>
 			</p>
