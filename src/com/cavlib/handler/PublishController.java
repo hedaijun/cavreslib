@@ -14,7 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -61,21 +63,27 @@ public class PublishController {
 			// 使用UUID给图片重命名，并去掉四个“-”
 //			String name = UUID.randomUUID().toString().replaceAll("-", "");
 			String name = mf.getOriginalFilename();
+			img.setUrl(name);	
 			// 获取文件的扩展名
 //			String ext = FilenameUtils.getExtension(mf.getOriginalFilename());  
 			//获取后缀名
 //            String ext =mf.getOriginalFilename().substring(mf.getOriginalFilename().lastIndexOf(".") + 1);
 			// 设置图片上传路径
 			String path = request.getSession().getServletContext().getRealPath("/resources");
-			img.setUrl(name);		
+			
+			FileOutputStream fos = FileUtils.openOutputStream(new File(path+"/" +name));//打开FileOutStrean流
+		    IOUtils.copy(mf.getInputStream(),fos);//将MultipartFile file转成二进制流并输入到FileOutStream
+		    fos.close();
+
 			// 以绝对路径保存重名命后的图片
 //			mf.transferTo(new File(path + "/" + name + "." + ext));		
-
-			mf.getInputStream();//获取文件输入流
-			mf.transferTo(new File(path + "/" + name));	
-			// 把图片信息保存到数据库
+//
+//			mf.getInputStream();//获取文件输入流
+//			mf.transferTo(new File(path + "/" + name));	
+//			// 把图片信息保存到数据库
+//			mf.getInputStream().close();
+			
 			imageService.addImage(img);
-			mf.getInputStream().close();
 		}  
 		count++;
 	}  
