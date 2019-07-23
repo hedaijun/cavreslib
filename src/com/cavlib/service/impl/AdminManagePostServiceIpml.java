@@ -1,5 +1,6 @@
 package com.cavlib.service.impl;
 
+import java.awt.print.Printable;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import com.github.pagehelper.PageHelper;
 public class AdminManagePostServiceIpml implements AdminManagePostService{
 	@Autowired
 	private PostMapper postMapper;
+	@Autowired
 	private ImageMapper imageMapper;
 	
 	@Override
