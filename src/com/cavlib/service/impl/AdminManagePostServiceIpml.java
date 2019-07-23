@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cavlib.beans.Post;
+import com.cavlib.dao.ImageMapper;
 import com.cavlib.dao.PostMapper;
 import com.cavlib.service.AdminManagePostService;
 import com.github.pagehelper.PageHelper;
@@ -14,11 +15,13 @@ import com.github.pagehelper.PageHelper;
 public class AdminManagePostServiceIpml implements AdminManagePostService{
 	@Autowired
 	private PostMapper postMapper;
+	private ImageMapper imageMapper;
 	
 	@Override
 	public Boolean deletePost(int id) {
 		// TODO Auto-generated method stub
 		postMapper.deletePost(id);
+		imageMapper.deleteImage(id);
 		return true;
 	}
 	
