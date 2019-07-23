@@ -27,8 +27,9 @@
 				<!--标题-->
 				<div class="col-md-11">
 						<h2 class="font-weight-bold welcome">
-							<img src="static/resources/icon.ico" class="img-fluid header">
-							<img src="static/resources/head1.png" class="img-fluid header">
+							<img src="static/resources/head3.ico" class="img-fluid">
+							<img src="static/resources/head.png" class="img-fluid header">
+							<img src="static/resources/head2.ico" class="img-fluid">
 						</h2>
 
 				</div>
@@ -130,11 +131,11 @@
 							<%=((User)session.getAttribute("user")).getName() %>
 						</button>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							<a class="dropdown-item" href="#">我的帖子</a> 
-							<a class="dropdown-item" href="#">编写新帖子</a> 
+							<a class="dropdown-item" href="<%=basePath %>getMyPosts">我的帖子</a> 
+							<a class="dropdown-item" href="<%=basePath %>publishPage">编写新帖子</a> 
 							<%if(((User)session.getAttribute("user")).getIsManager()){ %>
-							<a class="dropdown-item" href="<%=basePath %>logoff">管理帖子</a>
-							<a class="dropdown-item" href="<%=basePath %>logoff">管理用户</a>
+							<a class="dropdown-item" href="<%=basePath %>toManager">管理帖子</a>
+							<a class="dropdown-item" href="<%=basePath %>getpage">管理用户</a>
 							<%} %>
 							<a class="dropdown-item" href="<%=basePath %>logoff">注销</a>
 						</div>
@@ -233,7 +234,7 @@
 			<p>
 				<a class="btn btn-primary radius" href="<%=basePath %>post?post_id=<%=post.getPostId()%>">View details »</a>
 				<%if(((User)(session.getAttribute("user"))).getIsManager()||((User)(session.getAttribute("user"))).getUserId().equals(post.getUserId())){ %>	
-				<a class="btn btn-danger radius" href="#">Delete</a>
+				<a class="btn btn-danger radius" href="<%=basePath %>deleteSingleUser?post_id=<%=post.getPostId()%>">Delete</a>
 				<%} %>
 			</p>
 				
