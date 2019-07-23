@@ -28,9 +28,10 @@ public class AdminManagePostController {
 	
 	@RequestMapping("/deletePosts")
 	public String deleteUser(HttpServletRequest request,HttpServletResponse reponse) {
+		String path = request.getSession().getServletContext().getRealPath("/resources");
 		String []deletePost_id = request.getParameterValues("post_id");
 		for (int i =0;i<deletePost_id.length;i++) {
-			adminManagePostService.deletePost(Integer.parseInt(deletePost_id[i]));
+			adminManagePostService.deletePost(Integer.parseInt(deletePost_id[i]),path);
 		}
 		return "forward:/toManager";
 	}
@@ -41,13 +42,14 @@ public class AdminManagePostController {
 	
 	@RequestMapping("/deleteSingleUser")
 	public String deleteSingleUser(HttpServletRequest request,HttpServletResponse reponse) {
+		String path = request.getSession().getServletContext().getRealPath("/resources");
 		String post_id = request.getParameter("post_id");
 		System.out.println(post_id);
 //		int post_id = Integer.parseInt();
 //		System.out.print(post_id);
 		int intpost_id = Integer.parseInt(post_id);
 		System.out.println(intpost_id);
-		boolean frag = adminManagePostService.deletePost(intpost_id);
+		boolean frag = adminManagePostService.deletePost(intpost_id,path);
 		return "forward:/getPosts";
 	}
 	

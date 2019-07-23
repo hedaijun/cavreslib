@@ -1,6 +1,7 @@
 package com.cavlib.service.impl;
 
 import java.awt.print.Printable;
+import java.io.File;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +21,18 @@ public class AdminManagePostServiceIpml implements AdminManagePostService{
 	private ImageMapper imageMapper;
 	
 	@Override
-	public Boolean deletePost(int id) {
+	public Boolean deletePost(int id,String path) {
 		// TODO Auto-generated method stub
 		postMapper.deletePost(id);
 		imageMapper.deleteImage(id);
+		List<String> array = imageMapper.getImageByPostId(id);
+		for(int i=0;i<array.size();i++) {
+			File file = new File(path+"/"+array.get(i));
+			if(file.exists()&&file.isFile()) {
+				file.delete();
+			}
+		}
+		
 		return true;
 	}
 	
