@@ -63,31 +63,10 @@ public class PublishController {
 			// 获取文件的扩展名
 			String ext = FilenameUtils.getExtension(mf.getOriginalFilename());  
 			// 设置图片上传路径
-			String url = request.getSession().getServletContext().getRealPath("/resources");
-			img.setUrl(name+"."+ext);
-			
-			 request.setCharacterEncoding("UTF-8");
-		        Part part = request.getPart("file");
-		        String inputName=part.getName();
-		        InputStream input=part.getInputStream();
-		        //想要保存的目标文件的目录下
-		        String tagDir= url;
-		        //避免文件名重复使用uuid来避免,产生一个随机的uuid字符
-//		        String realFileName=UUID.randomUUID().toString();
-		        OutputStream output=new FileOutputStream(new File(tagDir,name));
-		        int len=0;
-		        byte[] buff=new byte[1024*8];
-		         
-		        while ((len = input.read(buff)) > -1) {
-		            output.write(buff, 0, len);
-		        }
-		 
-		        input.close();
-		        output.close();
-		        reponse.setCharacterEncoding("utf-8");
-			
+			String path = request.getSession().getServletContext().getRealPath("/resources");
+			img.setUrl(name+"."+ext);		
 			// 以绝对路径保存重名命后的图片
-			mf.transferTo(new File(url + "/" + name + "." + ext));			
+			mf.transferTo(new File(path + "/" + name + "." + ext));			
 			// 把图片信息保存到数据库
 			imageService.addImage(img);
 
