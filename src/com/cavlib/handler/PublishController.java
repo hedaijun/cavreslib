@@ -69,7 +69,7 @@ public class PublishController {
 			//获取后缀名
 //            String ext =mf.getOriginalFilename().substring(mf.getOriginalFilename().lastIndexOf(".") + 1);
 			// 设置图片上传路径
-			String path = request.getSession().getServletContext().getRealPath("/resources");
+			String path = request.getSession().getServletContext().getRealPath("static/resources");
 			
 			// 以绝对路径保存重名命后的图片
 //			mf.transferTo(new File(path + "/" + name + "." + ext));		
