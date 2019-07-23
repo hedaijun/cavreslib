@@ -44,8 +44,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<!--标题-->
 				<div class="col-md-11">
 						<h2 class="font-weight-bold welcome">
-							<img src="static/resources/icon.ico" class="img-fluid header">
-							<img src="static/resources/head1.png" class="img-fluid header">
+							<img src="static/resources/head3.ico" class="img-fluid">
+							<img src="static/resources/head.png" class="img-fluid header">
+							<img src="static/resources/head2.ico" class="img-fluid">
 						</h2>
 
 				</div>
@@ -147,7 +148,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<%=((User)session.getAttribute("user")).getName() %>
 						</button>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							<a class="dropdown-item" href="#">我的帖子</a> 
+							<a class="dropdown-item" href="<%=basePath %>getMyPosts">我的帖子</a> 
 							<a class="dropdown-item" href="#">编写新帖子</a> 
 							<%if(((User)session.getAttribute("user")).getIsManager()){ %>
 							<a class="dropdown-item" href="<%=basePath %>logoff">管理帖子</a>
@@ -160,6 +161,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<%} %>
 			</div>
 			<%if(session.getAttribute("user")==null){ 
+
 			%>
 				<%if(request.getAttribute("loginFail")!=null){ %>
 			<div class="alert alert-danger alert-dismissible fade show" role="alert">
