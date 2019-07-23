@@ -216,7 +216,7 @@
 	<!-- =================================================================以上逻辑复制index.jsp========================================================================= -->>
 
 
-	<div class="panel panel-success">
+	<div class="panel panel-success passage">
     <div class="panel-heading">
         <h3 class="panel-title">发布帖子</h3>
     </div>

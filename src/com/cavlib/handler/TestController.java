@@ -29,7 +29,7 @@ public class TestController {
 //			System.out.println(post);
 //		}
 //		testService.testPost();
-		String path = request.getSession().getServletContext().getRealPath("/resources");
+		String path = request.getSession().getServletContext().getRealPath("static/resources");
 		testService.testImage(path);
 		return "test";
 	}
