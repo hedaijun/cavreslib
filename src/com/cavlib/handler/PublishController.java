@@ -70,12 +70,12 @@ public class PublishController {
 			img.setUrl(name);		
 			// 以绝对路径保存重名命后的图片
 //			mf.transferTo(new File(path + "/" + name + "." + ext));		
-			
+
 			mf.getInputStream();//获取文件输入流
 			mf.transferTo(new File(path + "/" + name));	
 			// 把图片信息保存到数据库
 			imageService.addImage(img);
-
+			mf.getInputStream().close();
 		}  
 		count++;
 	}  
