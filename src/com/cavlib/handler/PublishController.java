@@ -53,9 +53,9 @@ public class PublishController {
 		int user_id = user.getUserId();
 		String type = request.getParameter("type");
 		Post post = new Post(title, link, content, type, user_id);		
-		publishService.publishPost(post);
+		publishService.publishPost(post);	
 		
-		int count=1;
+		
 		Image img = new Image();
 		img.setPostId(post.getPostId());
 	    for (MultipartFile mf : file) {
@@ -71,21 +71,14 @@ public class PublishController {
 			// 设置图片上传路径
 			String path = request.getSession().getServletContext().getRealPath("/resources");
 			
-			FileOutputStream fos = FileUtils.openOutputStream(new File(path+"/" +name));//打开FileOutStrean流
-		    IOUtils.copy(mf.getInputStream(),fos);//将MultipartFile file转成二进制流并输入到FileOutStream
-		    fos.close();
-
 			// 以绝对路径保存重名命后的图片
 //			mf.transferTo(new File(path + "/" + name + "." + ext));		
-//
-//			mf.getInputStream();//获取文件输入流
-//			mf.transferTo(new File(path + "/" + name));	
-//			// 把图片信息保存到数据库
-//			mf.getInputStream().close();
+			mf.transferTo(new File(path + "/" + name));	
 			
+			
+			// 把图片信息保存到数据库
 			imageService.addImage(img);
 		}  
-		count++;
 	}  
 
 		return "forward:/getPosts";

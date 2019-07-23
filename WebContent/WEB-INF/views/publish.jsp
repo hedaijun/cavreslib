@@ -18,13 +18,6 @@
 	<link rel="shortcut icon" href="static/resources/icon.ico">
 	<link rel="bookmark" href="static/resources/icon.ico">
     <title>Cavlib</title>
-
-	<meta charset="utf-8"> 
-	<title>编写帖子页面</title>
-	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
-	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
   </head>
   <body>
    <div class="container-fluid">
@@ -34,8 +27,9 @@
 				<!--标题-->
 				<div class="col-md-11">
 						<h2 class="font-weight-bold welcome">
-							<img src="static/resources/icon.ico" class="img-fluid header">
-							<img src="static/resources/head1.png" class="img-fluid header">
+							<img src="static/resources/head3.ico" class="img-fluid">
+							<img src="static/resources/head.png" class="img-fluid header">
+							<img src="static/resources/head2.ico" class="img-fluid">
 						</h2>
 
 				</div>
@@ -137,11 +131,11 @@
 							<%=((User)session.getAttribute("user")).getName() %>
 						</button>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							<a class="dropdown-item" href="#">我的帖子</a> 
-							<a class="dropdown-item" href="#">编写新帖子</a> 
+							<a class="dropdown-item" href="<%=basePath %>getMyPosts">我的帖子</a> 
+							<a class="dropdown-item" href="<%=basePath %>publishPage">编写新帖子</a> 
 							<%if(((User)session.getAttribute("user")).getIsManager()){ %>
-							<a class="dropdown-item" href="<%=basePath %>logoff">管理帖子</a>
-							<a class="dropdown-item" href="<%=basePath %>logoff">管理用户</a>
+							<a class="dropdown-item" href="<%=basePath %>toManager">管理帖子</a>
+							<a class="dropdown-item" href="<%=basePath %>getpage">管理用户</a>
 							<%} %>
 							<a class="dropdown-item" href="<%=basePath %>logoff">注销</a>
 						</div>
