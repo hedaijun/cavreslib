@@ -59,16 +59,18 @@ public class PublishController {
 	    for (MultipartFile mf : file) {
 		if(!mf.isEmpty()){
 			// 使用UUID给图片重命名，并去掉四个“-”
-			String name = UUID.randomUUID().toString().replaceAll("-", "");
+//			String name = UUID.randomUUID().toString().replaceAll("-", "");
+			String name = mf.getOriginalFilename();
 			// 获取文件的扩展名
 //			String ext = FilenameUtils.getExtension(mf.getOriginalFilename());  
 			//获取后缀名
-            String ext =mf.getOriginalFilename().substring(mf.getOriginalFilename().lastIndexOf(".") + 1);
+//            String ext =mf.getOriginalFilename().substring(mf.getOriginalFilename().lastIndexOf(".") + 1);
 			// 设置图片上传路径
 			String path = request.getSession().getServletContext().getRealPath("/resources");
-			img.setUrl(name+"."+ext);		
+			img.setUrl(name);		
 			// 以绝对路径保存重名命后的图片
-			mf.transferTo(new File(path + "/" + name + "." + ext));			
+//			mf.transferTo(new File(path + "/" + name + "." + ext));		
+			mf.transferTo(new File(path + "/" + mf.getOriginalFilename()));	
 			// 把图片信息保存到数据库
 			imageService.addImage(img);
 
