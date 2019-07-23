@@ -28,7 +28,7 @@ public class AdminManagePostController {
 	
 	@RequestMapping("/deletePosts")
 	public String deleteUser(HttpServletRequest request,HttpServletResponse reponse) {
-		String path = request.getSession().getServletContext().getRealPath("/resources");
+		String path = request.getSession().getServletContext().getRealPath("static/resources");
 		String []deletePost_id = request.getParameterValues("post_id");
 		for (int i =0;i<deletePost_id.length;i++) {
 			adminManagePostService.deletePost(Integer.parseInt(deletePost_id[i]),path);
@@ -42,7 +42,7 @@ public class AdminManagePostController {
 	
 	@RequestMapping("/deleteSingleUser")
 	public String deleteSingleUser(HttpServletRequest request,HttpServletResponse reponse) {
-		String path = request.getSession().getServletContext().getRealPath("/resources");
+		String path = request.getSession().getServletContext().getRealPath("static/resources");
 		String post_id = request.getParameter("post_id");
 		System.out.println(post_id);
 //		int post_id = Integer.parseInt();
