@@ -1,5 +1,6 @@
 package com.cavlib.service.impl;
 
+import java.io.File;
 import java.util.List;
 
 import org.eclipse.jdt.internal.compiler.ast.NullLiteral;
@@ -77,11 +78,19 @@ public class TestServiceImpl implements TestService{
     }
     
 	@Override
-    public void testImage() {
+    public void testImage(String path) {
 //    	    List<String> image = imageMapper.getImageByPostId(50);
 //    	    for (String name : image) {
 //				System.out.println(name);
 //			}
-		imageMapper.deleteImage(3);
+		System.out.println(path);
+		List<String> array = imageMapper.getImageByPostId(1);
+		for(int i=0;i<array.size();i++) {
+			File file = new File(path+"/"+array.get(i));
+			System.out.println(file.getPath());
+			if(file.exists()&&file.isFile()) {
+				file.delete();
+			}
+		}
     }
 }

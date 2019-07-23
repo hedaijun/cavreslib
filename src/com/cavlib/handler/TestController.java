@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,14 +22,15 @@ public class TestController {
 	private TestService testService;
 	
 	@RequestMapping("/test")
-	public String test() {
+	public String test(HttpServletRequest request,HttpServletResponse reponse) {
 //		PageHelper.startPage(1,5);
 //		List<Post> postList = testService.testPost();
 //		for (Post post : postList) {
 //			System.out.println(post);
 //		}
 //		testService.testPost();
-		testService.testImage();
+		String path = request.getSession().getServletContext().getRealPath("/resources");
+		testService.testImage(path);
 		return "test";
 	}
 }

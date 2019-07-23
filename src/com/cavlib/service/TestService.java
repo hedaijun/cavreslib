@@ -11,5 +11,5 @@ public interface TestService {
       public void testGetPost();
       public void testUser();
       public void testComment();
-      public void testImage();
+      public void testImage(String image);
 }
