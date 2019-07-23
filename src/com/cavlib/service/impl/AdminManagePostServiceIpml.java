@@ -24,7 +24,7 @@ public class AdminManagePostServiceIpml implements AdminManagePostService{
 	
 	
 	@Override
-	public List<Post> loadDeletePage(int page,String tag, String keyWord) {
+	public List<Post> loadDeletePage(int page) {
 		// TODO Auto-generated method stub
 		PageHelper.startPage(page,30);
 		return postMapper.getAllDeletePost();

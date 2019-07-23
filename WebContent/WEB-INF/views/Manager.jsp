@@ -209,12 +209,12 @@
 	<!-- =================================================================以上逻辑复制index.jsp========================================================================= -->>
 	<!--文章容器div，jsp动态加入文章-->
 	<form action="<%=basePath %>deletePosts" method = "post">
-	<input type="submit" value="确定批量删除">
+
 
 
 	
 	
-	<div class="container-fluid">	
+	<div class="container-fluid pagenav1">	
 <table class="table table-striped alert-danger text-center radius" style="table-layout: fixed;word-break:break-all;">
 
 
@@ -227,14 +227,14 @@
       <th scope="col">Time</th>
 	  <th scope="col">User_ID</th>
 	  <th scope="col">Type</th>
-	  <th scope="col">Select all-<input style="vertical-align:text-center;" type="checkbox" id="all" aria-label="Checkbox for following text input" onchange="chanval()"></th>
+	  <th scope="col">Select</th>
     </tr>
   </thead>
 
   <tbody id="checklist">
-  <%int i=1;%>
+	<%int i=(int)session.getAttribute("count");%>
     <%for(Post post:(List<Post>) session.getAttribute("deletePosts")) {%>
-
+	 
     <tr>
       <th scope="row"><%=i%></th>
       <td><%=post.getPostId() %></td>
@@ -256,7 +256,8 @@
 	  <td><%=post.getType()%></td>
 
 	   <td>
-		  <input style="width:13px;vertical-align:text-top;" type="checkbox" name="post_id" id=<%=post.getPostId()%> value=<%=post.getPostId()%>>
+		  <input class="ch_t" style="width:13px;vertical-align:text-top;" type="checkbox" name="post_id" id=<%=post.getPostId()%> value=<%=post.getPostId()%>>
+		  <label class="ch_label" for=<%=post.getPostId()%>></label>
 	   </td>
 
     </tr>
@@ -266,12 +267,82 @@
 </table>
 </div>
 	
+	<div class = "pagenav" style="text-align:center">
+	
+
+	<input class="ch_t" style="vertical-align:text-center;" type="checkbox" id="all" onchange="chanval()">
+	 <label class="ch_label" for="all"></label>
+
+	<button class="btn btn-danger my-2 my-sm-0" style="display:block;margin:0 auto" type="submit" onclick="return confirm('确定要删除吗？');">
+	确定批量删除
+	</button>
+	</div>
+	
 	
 	</form>		
 	<!--分页器,jsp根据数据库动态生成,显示5个页数摁钮、快速前进后退摁钮、前进后退摁钮-->
 	
 	
-	<script>
+
+	
+	
+	<%Integer pageindex=(Integer)(session.getAttribute("DeletePageindex")); %>
+	<div class="col-md-12 pagenav">
+					<nav>
+						<ul class="pagination">
+							<!--普通按钮，点击一次到达相应页-->
+							<li class="page-item">
+								<a class="page-link" href="javascript:if(changeval())location='<%=basePath %>getDeletePosts?DeletePageindex=<%=pageindex-1 %>'">Previous</a>
+							</li>
+							<!--快速跳过按钮，点击一次后退5页-->
+							<li class="page-item">
+								<a class="page-link" href="javascript:if(changeval())location='<%=basePath %>getDeletePosts?DeletePageindex=<%=pageindex-5 %>'">...</a>
+							</li>
+							<%if(pageindex>=3) {%>
+							<li class="page-item">
+								<a class="page-link" href="javascript:if(changeval())location='<%=basePath %>getDeletePosts?DeletePageindex=<%=pageindex-2 %>'"><%=pageindex-2 %></a>
+							</li>
+							<%} %>
+							<%if(pageindex>=2) {%>
+							<li class="page-item">
+								<a class="page-link" href="javascript:if(changeval())location='<%=basePath %>getDeletePosts?DeletePageindex=<%=pageindex-1 %>'"><%=pageindex-1 %></a>
+							</li>
+							<%} %>
+							<!--当前页-->
+							<li class="page-item active" aria-current="page">
+								<a class="page-link" href="javascript:if(changeval())location='<%=basePath %>getDeletePosts?DeletePageindex=<%=pageindex %>'"><%=pageindex %> <span class="sr-only">(current)</span></a>
+							</li>
+							<li class="page-item">
+								<a class="page-link" href="javascript:if(changeval())location='<%=basePath %>getDeletePosts?DeletePageindex=<%=pageindex+1 %>'"><%=pageindex+1 %></a>
+							</li>
+							<li class="page-item">
+								<a class="page-link" href="javascript:if(changeval())location='<%=basePath %>getDeletePosts?DeletePageindex=<%=pageindex+2 %>'"><%=pageindex+2 %></a>
+							</li>
+							<%if(pageindex==1) {%>
+							<li class="page-item">
+								<a class="page-link" href="javascript:if(changeval())location='<%=basePath %>getDeletePosts?DeletePageindex=4'">4</a>
+							</li>
+							<%} %>
+							<%if(pageindex<=2) {%>
+							<li class="page-item">
+								<a class="page-link" href="javascript:if(changeval())location='<%=basePath %>getDeletePosts?DeletePageindex=5'">5</a>
+							</li>
+							<%} %>
+							<!--快速跳过按钮，点击一次5前进页-->
+							<li class="page-item">
+								<a class="page-link" href="javascript:if(changeval())location='<%=basePath %>getDeletePosts?DeletePageindex=<%=pageindex+5 %>'">...</a>
+							</li>
+							<li class="page-item">
+								<a class="page-link" href="javascript:if(changeval())location='<%=basePath %>getDeletePosts?DeletePageindex=<%=pageindex+1 %>'">Next</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+</div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script>
     function changeval(){
         var boxes = document.getElementsByTagName("input");
         var val = []
@@ -284,71 +355,28 @@
         if(val==""||undefined||null){
         	return true;
         }
-        else if(confirm("确定离开？-==================="+val)){
+        else if(confirm("确定离开？你已选择了"+val)){
         	return true;
         }
         else return false;
         //alert(val+"确定离开？");
     }
-	</script>
-	
-	
-	<%Integer pageindex=(Integer)(session.getAttribute("pageindex")); %>
-	<div class="col-md-12 pagenav">
-					<nav>
-						<ul class="pagination">
-							<!--普通按钮，点击一次到达相应页-->
-							<li class="page-item">
-								<a class="page-link" href="javascript:if(changeval())location='<%=basePath %>getDeletePosts?pageindex=<%=pageindex-1 %>'">Previous</a>
-							</li>
-							<!--快速跳过按钮，点击一次后退5页-->
-							<li class="page-item">
-								<a class="page-link" href="javascript:if(changeval())location='<%=basePath %>getDeletePosts?pageindex=<%=pageindex-5 %>'">...</a>
-							</li>
-							<%if(pageindex>=3) {%>
-							<li class="page-item">
-								<a class="page-link" href="javascript:if(changeval())location='<%=basePath %>getDeletePosts?pageindex=<%=pageindex-2 %>'"><%=pageindex-2 %></a>
-							</li>
-							<%} %>
-							<%if(pageindex>=2) {%>
-							<li class="page-item">
-								<a class="page-link" href="javascript:if(changeval())location='<%=basePath %>getDeletePosts?pageindex=<%=pageindex-1 %>'"><%=pageindex-1 %></a>
-							</li>
-							<%} %>
-							<!--当前页-->
-							<li class="page-item active" aria-current="page">
-								<a class="page-link" href="javascript:if(changeval())location='<%=basePath %>getDeletePosts?pageindex=<%=pageindex %>'"><%=pageindex %> <span class="sr-only">(current)</span></a>
-							</li>
-							<li class="page-item">
-								<a class="page-link" href="javascript:if(changeval())location='<%=basePath %>getDeletePosts?pageindex=<%=pageindex+1 %>'"><%=pageindex+1 %></a>
-							</li>
-							<li class="page-item">
-								<a class="page-link" href="javascript:if(changeval())location='<%=basePath %>getDeletePosts?pageindex=<%=pageindex+2 %>'"><%=pageindex+2 %></a>
-							</li>
-							<%if(pageindex==1) {%>
-							<li class="page-item">
-								<a class="page-link" href="javascript:if(changeval())location='<%=basePath %>getDeletePosts?pageindex=4'">4</a>
-							</li>
-							<%} %>
-							<%if(pageindex<=2) {%>
-							<li class="page-item">
-								<a class="page-link" href="javascript:if(changeval())location='<%=basePath %>getDeletePosts?pageindex=5'">5</a>
-							</li>
-							<%} %>
-							<!--快速跳过按钮，点击一次5前进页-->
-							<li class="page-item">
-								<a class="page-link" href="javascript:if(changeval())location='<%=basePath %>getDeletePosts?pageindex=<%=pageindex+5 %>'">...</a>
-							</li>
-							<li class="page-item">
-								<a class="page-link" href="javascript:if(changeval())location='<%=basePath %>getDeletePosts?pageindex=<%=pageindex+1 %>'">Next</a>
-							</li>
-						</ul>
-					</nav>
-				</div>
-</div>
+    
+    
+    $('input[name="all"]').on("click",function(){
+    	        if($(this).is(':checked')){
+    	            $('input[name="post_id"]').each(function(){
+    	                $(this).prop("checked",true);
+    	            });
+    	        }else{
+    	            $('input[name="post_id"]').each(function(){
+    	                $(this).prop("checked",false);
+    	            });
+    	        }
+    	    });
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    
+	</script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

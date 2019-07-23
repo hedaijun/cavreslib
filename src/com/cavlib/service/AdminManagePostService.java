@@ -6,5 +6,5 @@ import com.cavlib.beans.Post;
 
 public interface AdminManagePostService {
 	Boolean deletePost(int id);
-	public List<Post> loadDeletePage(int page,String tag, String keyWord);
+	public List<Post> loadDeletePage(int page);
 }

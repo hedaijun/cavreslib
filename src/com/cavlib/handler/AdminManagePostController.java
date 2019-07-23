@@ -53,24 +53,26 @@ public class AdminManagePostController {
 	
 	
 	@RequestMapping("/getDeletePosts")
-	public String getPosts(Map<String,Object> map,HttpServletRequest request,HttpServletResponse response,HttpSession session) {
-		if(session.getAttribute("tag")==null) session.setAttribute("tag", "全部");
+	public String getDeletePosts(Map<String,Object> map,HttpServletRequest request,HttpServletResponse response,HttpSession session) {
+//		if(session.getAttribute("tag")==null) session.setAttribute("tag", "全部");
 		int page=1;
-		if(request.getParameter("pageindex")!=null) page= Integer.valueOf(request.getParameter("pageindex"));
+		if(request.getParameter("DeletePageindex")!=null) page= Integer.valueOf(request.getParameter("DeletePageindex"));
 		if(page<1) page=1;
-		String tag= (String)session.getAttribute("tag");
-		String keyword= (String)session.getAttribute("keyword");
-		if(request.getParameter("tag")!=null) tag=request.getParameter("tag");
-		if(request.getParameter("keyword")!=null) keyword=request.getParameter("keyword");
-		if(request.getParameter("back")!=null) {
-			tag="全部";
-			keyword=null;
-			page=1;
-		}
-		List<Post> deletePosts = adminManagePostService.loadDeletePage(page,tag,keyword);
-		session.setAttribute("tag", tag);
-		session.setAttribute("keyword", keyword);
-		session.setAttribute("pageindex", page);
+//		String tag= (String)session.getAttribute("tag");
+//		String keyword= (String)session.getAttribute("keyword");
+//		if(request.getParameter("tag")!=null) tag=request.getParameter("tag");
+//		if(request.getParameter("keyword")!=null) keyword=request.getParameter("keyword");
+//		if(request.getParameter("back")!=null) {
+//			tag="全部";
+//			keyword=null;
+//			page=1;
+//		}
+		int i = (page-1)*30+1;
+		List<Post> deletePosts = adminManagePostService.loadDeletePage(page);
+		session.setAttribute("count", i);
+//		session.setAttribute("tag", tag);
+//		session.setAttribute("keyword", keyword);
+		session.setAttribute("DeletePageindex", page);
 		session.setAttribute("deletePosts", deletePosts);
 		return "Manager";
 	}
