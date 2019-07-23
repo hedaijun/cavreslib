@@ -1,5 +1,6 @@
 package com.cavlib.service.impl;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,12 @@ public class CommentServiceImpl implements CommentService{
 	
 	@Override
 	public List<Comment> getComment(String postId){
-		return commentMapper.getContentByPost(Integer.valueOf(postId));
+		List<Comment> comments;
+		comments = commentMapper.getContentByPost(Integer.valueOf(postId));
+		for(Comment comment: comments) {
+			comment.setTime(new Timestamp(comment.getTime().getTime()-3600*8*1000));
+		}
+		return comments;
 	}
 	
 	@Override

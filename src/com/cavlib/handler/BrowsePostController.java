@@ -2,6 +2,7 @@ package com.cavlib.handler;
 
 import static org.hamcrest.CoreMatchers.anything;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
@@ -44,7 +45,9 @@ public class BrowsePostController {
 		request.setAttribute("imgs", imgs);
 		request.setAttribute("post", post);
 		request.setAttribute("comment", comment);
-		System.out.println(imgs);
+	
+//		comment.get(0).setTime(new Timestamp(comment.get(0).getTime().getTime()-3600*8));
+	//	System.out.println(new Timestamp(comment.get(0).getTime().getTime()-3600000*8));
 		//System.out.println(post.getLink());
 		}
 		catch(NumberFormatException e) {

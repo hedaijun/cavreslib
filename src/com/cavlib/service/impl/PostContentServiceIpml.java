@@ -1,5 +1,6 @@
 package com.cavlib.service.impl;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,12 @@ public class PostContentServiceIpml implements PostContentService {
 	
 	@Override
 	public Post getPostContent(String postId){
-		return postMapper.getPostById(Integer.valueOf(postId));
+		Post postContent;
+		postContent = postMapper.getPostById(Integer.valueOf(postId));
+
+		postContent.setTime(new Timestamp(postContent.getTime().getTime()-3600*8*1000));
+
+		return postContent;
 	}
 	
 	@Override

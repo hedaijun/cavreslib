@@ -255,6 +255,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</p>
 		</div>
 	</div>
+	<% Post post = (Post)request.getAttribute("post");
+		if(post.getType().equals("资源")||post.getType().equals("电影")){%>
 	<div class="row">
 		<div class="col-md-6 back">
 			<h2>
@@ -269,6 +271,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="col-md-6" back>
 		</div>
 	</div>
+	<%} %>
 	<div class="row">
 		<div class="col-md-10" back>
 		</div>
