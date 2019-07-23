@@ -270,7 +270,7 @@
 	<div class = "pagenav" style="text-align:center">
 	
 
-	<input class="ch_t" style="vertical-align:text-center;" type="checkbox" id="all" onchange="chanval()">
+	<input class="ch_t" style="vertical-align:text-center;" type="checkbox" id="all" onclick="setAllNo()"/>
 	 <label class="ch_label" for="all"></label>
 
 	<button class="btn btn-danger my-2 my-sm-0" style="display:block;margin:0 auto" type="submit" onclick="return confirm('确定要删除吗？');">
@@ -342,7 +342,17 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    
     <script>
+    
+	function setAllNo(){
+		var loves=document.getElementsByName("post_id");
+		for(var i=0;i<loves.length;i++){
+			loves[i].checked=!loves[i].checked;
+		}
+	}
+    
+    
     function changeval(){
         var boxes = document.getElementsByTagName("input");
         var val = []
