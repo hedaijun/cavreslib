@@ -61,7 +61,9 @@ public class PublishController {
 			// 使用UUID给图片重命名，并去掉四个“-”
 			String name = UUID.randomUUID().toString().replaceAll("-", "");
 			// 获取文件的扩展名
-			String ext = FilenameUtils.getExtension(mf.getOriginalFilename());  
+//			String ext = FilenameUtils.getExtension(mf.getOriginalFilename());  
+			//获取后缀名
+            String ext =mf.getOriginalFilename().substring(mf.getOriginalFilename().lastIndexOf(".") + 1);
 			// 设置图片上传路径
 			String path = request.getSession().getServletContext().getRealPath("/resources");
 			img.setUrl(name+"."+ext);		
