@@ -293,7 +293,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="col-md-10 back2">
 			<table class="table">
 				<tbody>
-				<%for(Comment comment: (List<Comment>)request.getAttribute("comment")) {%>
+					<% Map userNames = (Map)request.getAttribute("userName"); %>
+					<%for(Comment comment: (List<Comment>)request.getAttribute("comment")) {%>
 					<tr class="table-warning">
 						<td>
 							<img alt="image not found" src="static/resources/nazoshinshi.jpg" onload='this.width=90; this.height=90;' >
@@ -301,8 +302,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<td>
 							<%=comment.getContent() %>
 						</td>
-						<td>
-							<%=String.valueOf(comment.getUserId()) %>	
+						<td>								
+							<%=userNames.get(comment.getUserId()) %>
 						</td>
 						<td>
 							<%=df.format(comment.getTime()) %>

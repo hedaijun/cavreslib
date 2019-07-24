@@ -4,6 +4,8 @@ import static org.hamcrest.CoreMatchers.anything;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -34,17 +36,22 @@ public class BrowsePostController {
 		//获取PostBean,进入PostContent页面
 		try {
 		postId = request.getParameter("post_id");
-		List<Comment> comment = commentService.getComment(postId);
+		List<Comment> comments = commentService.getComment(postId);
+		Map userNames = new HashMap();
 		Post post =postContentService.getPostContent(postId);
-	//	System.out.println(comment.get(0).toString());
-	//	post.setContent(post.getContent().replace(" ", "<br>"));
 		List<String> imgs = postContentService.getPostImg(postId);
+		for(Comment comment: comments) {
+			userNames.put(comment.getUserId(),commentService.getUserName(comment.getUserId()));
+			//System.out.println(comment.getContent()+"::"+userNames.get(comment.getUserId()));
+		}
+		
 		post.setContent(post.getContent().replace("\r\n", "<br>"));
 		post.setContent(post.getContent().replace("\r", "<br>"));
 		post.setContent(post.getContent().replace("\n", "<br>"));
 		request.setAttribute("imgs", imgs);
 		request.setAttribute("post", post);
-		request.setAttribute("comment", comment);
+		request.setAttribute("comment", comments);
+		request.setAttribute("userName", userNames);
 	
 //		comment.get(0).setTime(new Timestamp(comment.get(0).getTime().getTime()-3600*8));
 	//	System.out.println(new Timestamp(comment.get(0).getTime().getTime()-3600000*8));
