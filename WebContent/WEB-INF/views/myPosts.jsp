@@ -132,7 +132,7 @@
 						</button>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 							<a class="dropdown-item" href="<%=basePath %>getMyPosts">我的帖子</a> 
-							<a class="dropdown-item" href="<%=basePath %>publishPage">编写新帖子</a> 
+							<a class="dropdown-item" href="<%=((User)session.getAttribute("user")).getIsBaned()?"#":(basePath+"publishPage") %>">编写新帖子</a> 
 							<%if(((User)session.getAttribute("user")).getIsManager()){ %>
 							<a class="dropdown-item" href="<%=basePath %>toManager">管理帖子</a>
 							<a class="dropdown-item" href="<%=basePath %>getpage">管理用户</a>
