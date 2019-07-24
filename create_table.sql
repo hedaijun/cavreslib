@@ -21,12 +21,12 @@ CREATE TABLE post(
 CREATE TABLE comment(
    user_id INT NOT NULL,
    post_id INT NOT NULL,
-   time TIMESTAMP NOT NULL DEFAULT current_timestamp
+   time TIMESTAMP NOT NULL DEFAULT current_timestamp,
    content TEXT NOT NULL,
    PRIMARY KEY (user_id, post_id, time)
 );
 
 CREATE TABLE image(
    post_id INT NOT NULL,
-   url VARCHAR(250) NOT NULL,
+   url VARCHAR(250) NOT NULL
 );
